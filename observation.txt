@@ -9,3 +9,9 @@ Step 1: I wrote the original file on my local computer and pushed it to github. 
 Step 2: Running the file and it saying "Check who logged in!", made me notice the code needed my user to match the if statement's user to proceed to the rectangle calculation. I updated the user in the if statement to mine, bshiao, and saved it as calculateRectangle.sh. Running this file would prompt me a height and width to calculate a rectangle area and the repeating Yes/No loop.
 
 Step 3: To calculate the area of a circle, I only needed to prompt the user one variable, the radius, then calculate the area of its circle by squaring it and multiplying that by pi. This requires floats instead of integers.
+wc -l : Prints the number of lines in a file.
+expr didnt accept non-integer calculations. I needed the bc command. So I used it like so: 
+       echo "Enter radius of circle: "
+       read radius
+       PI=3.14159
+       area=`echo "$PI * $radius * $radius" | bc`
