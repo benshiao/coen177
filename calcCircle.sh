@@ -27,7 +27,6 @@ while [ $response != "No" ]
 do
        echo "Enter radius of circle: "
        read radius
-       PI=3.14159
        area='expr $radius \* $radius'
        echo "The area of the circle is $area"
        echo "Would you like to repeat for another circle [Yes/No]?"
