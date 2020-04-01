@@ -1,3 +1,7 @@
+# Name: Benjamin Shiao
+# Date: 3/31/20
+# Title: Lab1 – Unix/Linux Commands and Basic Shell Programming
+# Description: This program computes a simple sh file that calculates the area of a rectangle given a width and height and repeats on a given Yes/No.
 #Sample shell programs for Lab assignment
 #!/bin/sh
 echo Executing $0
