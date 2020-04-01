@@ -1,0 +1,11 @@
+# Name: Benjamin Shiao
+# Date: 3/31/20
+# Title: Lab1 – Unix/Linux Commands and Basic Shell Programming
+# Description: This program computes a simple sh file and teaches us to use a remote linux server to run files using terminal. Specifically, a file that calculates the area of a given rectangle with width and height, then the area of a circle with a given radius. I also chose to use github to move files between my local computer and the linux server, so I practiced that skill as well.
+
+
+Step 1: I wrote the original file on my local computer and pushed it to github. I then used the ssh commands on terminal to get onto the remote linux server provided by SCU. From there, I cloned the repository I made on github. Now, I could run this .sh file on the remote server, and it would say "Check who logged in!". 
+
+Step 2: Running the file and it saying "Check who logged in!", made me notice the code needed my user to match the if statement's user to proceed to the rectangle calculation. I updated the user in the if statement to mine, bshiao, and saved it as calculateRectangle.sh. Running this file would prompt me a height and width to calculate a rectangle area and the repeating Yes/No loop.
+
+Step 3: To calculate the area of a circle, I only needed to prompt the user one variable, the radius, then calculate the area of its circle by squaring it and multiplying that by pi. This requires floats instead of integers.
