@@ -11,7 +11,7 @@ echo "\$\$"=$$
 user=`whoami`
 numusers=`who | wc -l`
 echo "Hi $user! There are $numusers users logged on."
-if [ $user = "salagtash" ]
+if [ $user = "bshiao" ]
 then
        echo "Now you can proceed!"
 else
