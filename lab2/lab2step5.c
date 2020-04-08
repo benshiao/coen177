@@ -21,7 +21,8 @@ int main(int argc, char *argv[]) {
       if(pid3){
          fork();
       }
-   }else{
+   }
+   if(pid1){
       fork();
    }
       
