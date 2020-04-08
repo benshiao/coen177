@@ -7,4 +7,5 @@
 Step 1: I noticed the code was for a .c file, so I saved the code into a file named lab2.c
 Step2: I type gcc lab2.c - o executablename, and it creates the executablename file in the folder. I created a copy of my lab2.c file.
 Step 3:When I run ./executeablename, I get segmentation fault. When I run ./executeablename 0, it prints Child process <number> Parent Process <number> to 99
-Step 4:
+Step 4: By typing in ./executeablename <number>, the time between each process number printing grows as the number increases and the speed decreases as the number decreases. Delays of 500 is almost instant, and delays of 5000 is much slower than 500, but still fairly quick.
+Step 5:
