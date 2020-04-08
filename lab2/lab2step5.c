@@ -18,9 +18,6 @@ int main(int argc, char *argv[]) {
    if(pid){
       fork();
    }
-   if(pid){
-      fork();
-   }
    if(pid){ 
       fork();
    }
