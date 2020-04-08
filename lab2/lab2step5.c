@@ -18,9 +18,11 @@ int main(int argc, char *argv[]) {
    pid2 = fork();
    if(!pid2 && !pid1){
       pid3 = fork();
-      if(!pid3){
+      if(pid3){
          fork();
       }
+   }else{
+      fork();
    }
       
   printf("\t \t \t new process---%d -- %d \n", getpid(), getppid());
