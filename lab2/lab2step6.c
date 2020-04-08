@@ -26,7 +26,7 @@ void *threadFuncChild(void * args){
    int *n = (int *)args;
    int i;
    for (i=0;i<100;i++) {
-     printf("\t \t \t Child Process %d \n",i);
+     printf("Child Process %d \n",i);
      usleep(*n);
    }  
    return;
