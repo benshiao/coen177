@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
    pid_t  pid1, pid2;
    printf("\n Before forking.\n");
    pid1 = fork();
-//    pid2 = fork();
+   pid2 = fork();
 //    if(!pid1 && !pid2){
 //       fork();
 //       fork();
