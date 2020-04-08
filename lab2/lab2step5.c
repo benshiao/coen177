@@ -18,9 +18,6 @@ int main(int argc, char *argv[]) {
    pid1 = fork();
    pid2 = fork();
    pid3 = fork();
-   if (pid == -1) {
-       fprintf(stderr, "can't fork, error %d\n", errno);
-   }
    i++;
   printf("\t \t \t PID number %d \n", i);
   usleep(n);
