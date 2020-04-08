@@ -20,6 +20,6 @@ int main(int argc, char *argv[]) {
       fork();
       fork();
    }
-  printf("\t \t \t new process--- \n");
+  printf("\t \t \t new process---%d -- %d \n", getpid(), getppid());
    return 0;
 }
