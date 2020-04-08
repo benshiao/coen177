@@ -1,7 +1,7 @@
 /* Name: Benjamin Shiao
 # Date: 4/7/20
 # Title: Lab2 – Programming in C and use of Systems Calls
-# Description:
+# Description: Original unedited file given in step 1.
 */
 
 /*Sample C program for Lab assignment 1*/
