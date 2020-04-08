@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
       fork();
    }else{
       fork();
+      fork();
    }
   printf("\t \t \t new process--- \n");
    return 0;
