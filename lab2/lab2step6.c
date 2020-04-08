@@ -13,7 +13,7 @@
 #include <pthread.h>
 /* main function with command-line arguments to pass */
 
-void threadFuncParent(int n){
+void *threadFuncParent(void * args){
    int i;
    for (i=0;i<100;i++) {
      printf("\t \t \t Parent Process %d \n",i);
@@ -21,7 +21,7 @@ void threadFuncParent(int n){
    }  
    return;
 }
-void threadFuncChild(int n){
+void *threadFuncChild(void * args){
    int i;
    for (i=0;i<100;i++) {
      printf("\t \t \t Child Process %d \n",i);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
    int n = atoi(argv[1]); // n microseconds to input from keyboard for delay
    printf("\n Before Thread.\n");
    pthread_t thread_id;
-   pthread_create(&thread_id, NULL, threadFuncParent, &n);
+   pthread_create(&thread_id, NULL, threadFuncParent, (void *)&n);
    pthread_join(thread_id, NULL);
    printf("\n After Thread.\n");
    
