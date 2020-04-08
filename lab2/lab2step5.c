@@ -16,9 +16,9 @@ int main(int argc, char *argv[]) {
    printf("\n Before forking.\n");
    pid1 = fork();
    pid2 = fork();
-   if(pid2){
+   if(!pid2 && !pid1){
       pid3 = fork();
-      if(pid3){
+      if(!pid3){
          fork();
       }
    }
