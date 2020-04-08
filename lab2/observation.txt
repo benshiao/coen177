@@ -1,0 +1,8 @@
+# Name: Benjamin Shiao
+# Date: 4/7/20
+# Title: Lab2 – Programming in C and use of Systems Calls
+# Description: this lab was to develop sample C program with two or more processes using fork( ), exit( ), wait( ), and exec( ) system calls, in addition to demonstrating the use of light weight processes.
+
+
+Step 1: I noticed the code was for a .c file, so I saved the code into a file named lab2.c
+Step2: 
