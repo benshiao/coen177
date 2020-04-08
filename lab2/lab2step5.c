@@ -17,6 +17,5 @@ int main(int argc, char *argv[]) {
    pid = fork();
    pid = fork();
   print("\t \t \t new process--- \n");
-  usleep(n);
    return 0;
 }
