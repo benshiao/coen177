@@ -14,14 +14,15 @@
 /* main function with command-line arguments to pass */
 
 void *threadFuncParent(int n){
-   for (int i=0;i<100;i++) {
+   int i;
+   for (i=0;i<100;i++) {
      printf("\t \t \t Parent Process %d \n",i);
      usleep(n);
    }  
    return;
 }
-void *threadFuncChild(int n){
-   for (int i=0;i<100;i++) {
+void *threadFuncChild(void * args){
+   for (i=0;i<100;i++) {
      printf("\t \t \t Child Process %d \n",i);
      usleep(n);
    }  
