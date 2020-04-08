@@ -17,7 +17,7 @@ void *threadFuncParent(void * args){
    int *n = (int *)args;
    int i;
    for (i=0;i<100;i++) {
-     printf("\t \t \t Parent Process %d \n",i);
+     printf("\t \t \t Parent Thread %d \n",i);
      usleep(*n);
    }  
    return;
@@ -26,7 +26,7 @@ void *threadFuncChild(void * args){
    int *n = (int *)args;
    int i;
    for (i=0;i<100;i++) {
-     printf("Child Process %d \n",i);
+     printf("Child Thread %d \n",i);
      usleep(*n);
    }  
    return;
