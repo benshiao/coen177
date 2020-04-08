@@ -12,7 +12,7 @@
 #include <errno.h>      /* errno */
 /* main function with command-line arguments to pass */
 int main(int argc, char *argv[]) {
-   pid_t  pid;
+   pid_t  pid1, pid2, pid3;
    int i, n = atoi(argv[1]); // n microseconds to input from keyboard for delay
    printf("\n Before forking.\n");
    pid1 = fork();
