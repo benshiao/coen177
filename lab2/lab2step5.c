@@ -17,8 +17,7 @@ int main(int argc, char *argv[]) {
    pid = fork();
    if(pid){
       fork();
-   }
-   if(pid){ 
+   }else{
       fork();
    }
   printf("\t \t \t new process--- \n");
