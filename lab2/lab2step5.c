@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
    pid2 = fork();
    if(!pid1 && !pid2){
       fork();
+      fork();
    }
   printf("\t \t \t new process--- \n");
    return 0;
