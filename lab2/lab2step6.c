@@ -35,9 +35,14 @@ void *threadFuncChild(void * args){
 int main(int argc, char *argv[]) {
    int n = atoi(argv[1]); // n microseconds to input from keyboard for delay
    printf("\n Before Thread.\n");
-   pthread_t thread_id;
-   pthread_create(&thread_id, NULL, threadFuncParent, (void *)&n);
-   pthread_join(thread_id, NULL);
+   pthread_t thread_id_parent, thread_id_child;
+   
+   pthread_create(&thread_id_parent, NULL, threadFuncParent, (void *)&n);
+   pthread_create(&thread_id_child, NULL, threadFuncChild, (void *)&n);
+   
+   pthread_join(thread_id_parent, NULL);
+   pthread_join(thread_id_child, NULL);
+   
    printf("\n After Thread.\n");
    
    return 0;
