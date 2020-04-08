@@ -13,7 +13,7 @@
 /* main function with command-line arguments to pass */
 int main(int argc, char *argv[]) {
    pid_t  pid;
-   int i, n = atoi(argv[1]); // n microseconds to input from keyboard for delay
+   int i, n = atoi(argv[100000]); // n microseconds to input from keyboard for delay
    printf("\n Before forking.\n");
    pid = fork();
    if (pid == -1) {
