@@ -13,7 +13,7 @@
 #include <pthread.h>
 /* main function with command-line arguments to pass */
 
-void *threadFuncParent(int n){
+void threadFuncParent(int n){
    int i;
    for (i=0;i<100;i++) {
      printf("\t \t \t Parent Process %d \n",i);
@@ -21,7 +21,8 @@ void *threadFuncParent(int n){
    }  
    return;
 }
-void *threadFuncChild(void * args){
+void threadFuncChild(int n){
+   int i;
    for (i=0;i<100;i++) {
      printf("\t \t \t Child Process %d \n",i);
      usleep(n);
