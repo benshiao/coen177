@@ -15,4 +15,13 @@ Step 5: I created a c file that would print a statement at its end. By running t
          if(!pid1 && !pid2 && pid3){ fork(); }
         I was able to get an unbalanced tree where each parent had 2 or zero childeren, satisfying the requirements. Sometimes I got a parent id of 1, suggesting a child was running after the parent exits, orphaning the child. I fixed this by adding a wait(NULL) before the end of main.
    
-Step 6:
+Step 6: My main code for this step was 
+   pthread_create(&thread_id_parent, NULL, threadFuncParent, (void *)&n);
+   pthread_create(&thread_id_child, NULL, threadFuncChild, (void *)&n);
+   
+   pthread_join(thread_id_parent, NULL);
+   pthread_join(thread_id_child, NULL);
+   and this allowed me to run both threads together, printing similar outputs to step 3. Some child threads were next to each other randomly, indicating the computer didnt always allocate everything in order.
+   
+Step 7:
+   
