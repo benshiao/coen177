@@ -16,7 +16,8 @@ int main(int argc, char *argv[]) {
    printf("\n Before forking.\n");
    pid1 = fork();
    pid2 = fork();
-   if(!pid1){ fork(); }
+   if(!pid1){ pid3 = fork(); }
+   if(!pid1 && !pid3){ fork(); }
   printf("\t \t \t new process---%d -- %d \n", getpid(), getppid());
    wait(NULL);
    return 0;
