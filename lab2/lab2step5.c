@@ -16,6 +16,6 @@ int main(int argc, char *argv[]) {
    printf("\n Before forking.\n");
    pid = fork();
    pid = fork();
-  print("\t \t \t new process--- \n");
+  printf("\t \t \t new process--- \n");
    return 0;
 }
