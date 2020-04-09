@@ -32,12 +32,12 @@ int main(int argc, char *argv[]) {
        exit(0);
    }
    else{
-      execlp("/bin/ls", "ls", NULL);
        // Child process
        for (i=0;i<100;i++) {
            printf("Child process %d\n",i);
            usleep(n);
        }
+      execlp("/bin/ls", "ls", NULL);
    }
    return 0;
 }
