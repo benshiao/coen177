@@ -18,19 +18,25 @@ int main(int argc, char *argv[]) {
    pid = fork();
    if (pid == -1) {
        fprintf(stderr, "can't fork, error %d\n", errno);
+   }else if(pid == 0)
+   {
+       execlp("/bin/ls", "ls", NULL);
    }
+else
+   {
+       wait(NULL);
+       printf("Child Complete");
+       exit(0);
+   }
+
    if (pid){
        // Parent process
        for (i=0;i<100;i++) {
            printf("\t \t \t Parent Process %d \n",i);
            usleep(n);
        }
-      //wait(NULL);
-      printf("Child complete");
-      //exit(0);
    }
    else{
-      //execlp("/bin/ls","ls",NULL);
        // Child process
        for (i=0;i<100;i++) {
            printf("Child process %d\n",i);
