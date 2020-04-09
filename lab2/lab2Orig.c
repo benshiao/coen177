@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
    pid = fork();
    if (pid == -1) {
        fprintf(stderr, "can't fork, error %d\n", errno);
-   }
+   }   
    if (pid){
        // Parent process
        for (i=0;i<100;i++) {
