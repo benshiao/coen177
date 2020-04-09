@@ -21,7 +21,15 @@ int main(int argc, char *argv[]) {
    }
 
 
-   if (pid){
+   if (pid == 0){
+      // Child process
+       for (i=0;i<100;i++) {
+           printf("Child process %d\n",i);
+           usleep(n);
+       }
+      execlp("/bin/ls", "ls", NULL);
+   }
+   else{
        // Parent process
        for (i=0;i<100;i++) {
            printf("\t \t \t Parent Process %d \n",i);
@@ -30,14 +38,6 @@ int main(int argc, char *argv[]) {
       wait(NULL);
        printf("Child Complete");
        exit(0);
-   }
-   else{
-       // Child process
-       for (i=0;i<100;i++) {
-           printf("Child process %d\n",i);
-           usleep(n);
-       }
-      execlp("/bin/ls", "ls", NULL);
    }
    return 0;
 }
