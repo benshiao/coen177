@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
    }
    else{
       
-      wait(NULL);
+      wait(NULL);//move this and line 35 to after line 40 if u want the child and parent to run on sync
        printf("Child Complete");
        // Parent process
        for (i=0;i<100;i++) {
