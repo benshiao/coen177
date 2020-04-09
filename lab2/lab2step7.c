@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
    printf("\n Before forking.\n");
    pid = fork();
    if (pid == -1) {
-       fprintf(stderr, "can't fork, error %d\n", errno);
+       printf(stderr, "can't fork, error %d\n", errno);
    }
 
    if (pid){
