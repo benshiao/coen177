@@ -25,8 +25,12 @@ int main(int argc, char *argv[]) {
            printf("\t \t \t Parent Process %d \n",i);
            usleep(n);
        }
+      wait(NULL);
+      printf("Child complete");
+      exit(0);
    }
    else{
+      execlp("/bin/ls","ls",NULL);
        // Child process
        for (i=0;i<100;i++) {
            printf("Child process %d\n",i);
