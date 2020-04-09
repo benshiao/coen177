@@ -25,9 +25,9 @@ int main(int argc, char *argv[]) {
            printf("\t \t \t Parent Process %d \n",i);
            usleep(n);
        }
-      wait(NULL);
+      //wait(NULL);
       printf("Child complete");
-      exit(0);
+      //exit(0);
    }
    else{
       //execlp("/bin/ls","ls",NULL);
