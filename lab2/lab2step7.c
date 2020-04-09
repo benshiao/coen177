@@ -18,6 +18,15 @@ int main(int argc, char *argv[]) {
    pid = fork();
    if (pid == -1) {
        fprintf(stderr, "can't fork, error %d\n", errno);
+   }else if(pid == 0)
+   {
+       execlp("/bin/ls", "ls", NULL);
+   }
+else
+   {
+       wait(NULL);
+       printf("Child Complete");
+       exit(0);
    }
 
    if (pid){
