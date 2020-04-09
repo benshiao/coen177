@@ -30,14 +30,13 @@ int main(int argc, char *argv[]) {
       execlp("/bin/ls", "ls", NULL);
    }
    else{
-      
-      wait(NULL);//move this and line 35 to after line 40 if u want the child and parent to run on sync
-       printf("Child Complete");
        // Parent process
        for (i=0;i<100;i++) {
            printf("\t \t \t Parent Process %d \n",i);
            usleep(n);
        }
+      wait(NULL);
+       printf("Child Complete");
        exit(0);
    }
    return 0;
