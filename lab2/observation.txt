@@ -7,13 +7,13 @@
 Step 1: I noticed the code was for a .c file, so I saved the code into a file named lab2.c. The code took in the first arguement into int n to use as the delay between processes in the for loops for the child and parent processes after the fork.
 Step2: I type gcc lab2.c - o executablename, and it creates the executablename file in the folder. I created a copy of my lab2.c file.
 Step 3:When I run ./executeablename, I get segmentation fault. When I run ./executeablename 0, it prints Child process <number> Parent Process <number> to 99. Sometimes multiple child/parent processes would be next to each other without a parent/child class inbetween, suggesting that the processes weren't always exactly in order and were slightly random. 
-Step 4: By typing in ./executeablename <number>, the time between each process number printing grows as the number increases and the speed decreases as the number decreases. Delays of 500 is almost instant, and delays of 5000 is much slower than 500, but still fairly quick. At a delay of 500, I often saw multiple parent/child processes run out of order, and at a delay of 5000 I still saw this happen, but seemingly less than when the delay was 500
+Step 4: By typing in ./executeablename <number>, the time between each process number printing grows as the number increases and the speed decreases as the number decreases. Delays of 500 is almost instant, and delays of 5000 is much slower than 500, but still fairly quick. At a delay of 500, I often saw multiple parent/child processes run out of order, and at a delay of 5000 I still saw this happen, but seemingly less than when the delay was 500. I believe this is because slower processes have more time to run in order.
 Step 5: I created a c file that would print a statement at its end. By running this code:
           pid1 = fork();
          pid2 = fork();
          if(!pid1){ pid3 = fork(); }
          if(!pid1 && !pid2 && pid3){ fork(); }
-        I was able to get an unbalanced tree where each parent had 2 or zero childeren, satisfying the requirements. Sometimes I got a parent id of 1, suggesting a child was running after the parent exits, orphaning the child. I fixed this by adding a wait(NULL) before the end of main.
+        I was able to get an unbalanced tree where each parent had 2 or zero childeren, satisfying the requirements. Sometimes I got a parent id of 1, suggesting a child was running after the parent exits, orphaning the child. I fixed this by adding a wait(NULL) before the end of main. I was testing different if statements to make sure i got this output.
    
 Step 6: My main code for this step was 
    pthread_create(&thread_id_parent, NULL, threadFuncParent, (void *)&n);
@@ -21,7 +21,7 @@ Step 6: My main code for this step was
    
    pthread_join(thread_id_parent, NULL);
    pthread_join(thread_id_child, NULL);
-   and this allowed me to run both threads together, printing similar outputs to step 3. Some child/parent threads were next to each other randomly, indicating the computer didnt always allocate everything in order. This always followed with multiple parent/child threads printing together somewhere else in the output.
+   and this allowed me to run both threads together, printing similar outputs to step 3. Some child/parent threads were next to each other randomly, indicating the computer didnt always allocate everything in order. This always followed with multiple parent/child threads printing together somewhere else in the output. This is similar to step 3 because threads are scheduled similarly like processes.
    
 Step 7: I saw that the execlp() command was for if pid==0, meaning it would run for the child process. The else statement meant the rest of the code was for the parent. The wait(NULL) ensured the child process would complete before progressing, so it mean the exit(0) wouldn't run until the child process was finished. When running this, the child and parent processes weren't perfectly alternating, occaionally clumping together like before, but the execlp() command never ran/printed until all child and parent processes 0-99 were complete. This suggested the parent process didn't exit until the child processes terminated first.
    
