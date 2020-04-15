@@ -1,3 +1,10 @@
+  
+/* Name: Benjamin Shiao
+# Date: 4/14/20
+# Title: Lab3 – Pthreads and inter-process Communication – Pipes
+# Description: Step two original code
+*/
+
 /**************************
 *   Lab3 - pipe()
 **************************/
