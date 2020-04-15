@@ -15,9 +15,7 @@ int main() {
    for (i = 0; i < NTHREADS; i++) 
        pthread_create(&threads[i], NULL, go, &i);
    for (i = 0; i < NTHREADS; i++) {
-COEN 177 – Lab assignment 3
-  4/4
-   printf("Thread %d returned\n", i);
+      printf("Thread %d returned\n", i);
        pthread_join(threads[i],NULL);
    }
    printf("Main thread done.\n");
