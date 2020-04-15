@@ -13,9 +13,8 @@ pthread_t threads[NTHREADS];
 int main() {
    int i;
    for (i = 0; i < NTHREADS; i++){
-      int *arg = malloc(sizeof(*arg));
-      *arg = i;
-       pthread_create(&threads[i], NULL, go, arg);
+      int *i = malloc(sizeof(*i));
+       pthread_create(&threads[i], NULL, go, (void *) i);
    }
    for (i = 0; i < NTHREADS; i++) {
       printf("Thread %d returned\n", i);
