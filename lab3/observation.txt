@@ -20,7 +20,11 @@ o b s e r v a t i o n . t x t
  s t e p 3 
  s t e p 3 . c 
  
- Step 4:
+ Step 4: I made a C file that would run cat /etc/passwd | grep root, and the output was the same as if I ran the command in linux. It would find where root was and print the file with it.
+ It ouptut the following as expected:
+ root:x:0:0:root:/root:/bin/bash
+rootbash:x:0:0:root:/root:/bin/bash
+operator:x:11:0:operator:/root:/sbin/nologin
  
  
  Step 5:
