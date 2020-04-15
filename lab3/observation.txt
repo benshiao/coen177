@@ -1,0 +1,6 @@
+# Name: Benjamin Shiao
+# Date: 4/14/20
+# Title: Lab3 – Pthreads and inter-process Communication – Pipes
+# Description: Observation file for lab 3
+
+Step 1:
