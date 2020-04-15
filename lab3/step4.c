@@ -18,16 +18,16 @@ int main() {
        dup2(fds[0], 0);
        close(fds[1]);
      //cant put in 2 arguements like below, 1st program (grep), 2nd (grep), 3rd is pointer to list of strings( where root is)
-      char myString[1][14] = { "root"}; 
 
-       execlp("grep", "grep", myString);//grep searches for smth with root in it
+
+       execlp("grep", "grep", "root", NULL);//grep searches for smth with root in it
    }
    /*child 2 duplicates upstream into stdout */
    else if (fork() == 0) {
        dup2(fds[1], 1);
        close(fds[0]);
       //takes input that is "/etc/passwd" and pass into below
-       execlp("cat", "cat", 0);//cat prints out file contents
+       execlp("cat", "cat", "/etc/passwd", 0);//cat prints out file contents
    }
    else {  /*parent closes both ends and wait for children*/
        close(fds[0]);
