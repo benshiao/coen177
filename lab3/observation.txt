@@ -3,4 +3,18 @@
 # Title: Lab3 – Pthreads and inter-process Communication – Pipes
 # Description: Observation file for lab 3
 
-Step 1:
+Step 1: Running the C file in step 1 basically just ran the ls linux command.
+
+Step 2: Running the C file in step 2 would print "writer on the upstream end of the pipe <number of arguements>" and also print the command and all arguements spaced out character by character after "reader on the downstream end of the pipe. For example, i named the file step2.c and when i ran it as "./step2 hi dog" it printed ". / s t e p 2 h i d o g"
+
+Step 3: I edited the code to the writer process passes the output of “ls” command to the upstream end of the pipe and when I ran my resulting file in step 3, it would print out the same output as linux command ls, but it spaced out every character with a space and didn't print my extra input/arguements.
+Printed the following:
+o b s e r v a t i o n . t x t 
+ s t e p 1 
+ s t e p 1 . c 
+ s t e p 2 
+ s t e p 2 . c 
+ s t e p 3 
+ s t e p 3 . c 
+ 
+ Step 4:
