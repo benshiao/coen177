@@ -33,12 +33,9 @@ int main(int argc,char *argv[]){
      
       dup2(fds[1], 1);
        close(fds[0]);
-         write(1,"~",1);
     
-    
-      cout<<"hi";
       //takes input that is "/etc/passwd" and pass into below
-       execlp("cat", "cat", buff, 0);//cat prints out file contents
+       execlp("cat", "cat", buff);//cat prints out file contents
      
       exit(0);
    }
