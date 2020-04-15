@@ -14,6 +14,7 @@ int main() {
    int i;
    for (i = 0; i < NTHREADS; i++){
       int *i = malloc(sizeof(*i));
+      *i = i;
        pthread_create(&threads[i], NULL, go, (void *) i);
    }
    for (i = 0; i < NTHREADS; i++) {
