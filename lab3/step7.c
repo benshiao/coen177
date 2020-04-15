@@ -1,7 +1,7 @@
 /* Name: Benjamin Shiao
 # Date: 4/14/20
 # Title: Lab3 – Pthreads and inter-process Communication – Pipes
-# Description: Step 7, creates 10 threads and prints their thread number and a variable number. Fixed so no inconsistent numbering.
+# Description: Step 7, based on step 6 code, creates 10 threads and prints their thread number and a variable number. Fixed so no inconsistent numbering.
 */
 
 #include <stdio.h>
@@ -13,7 +13,7 @@ pthread_t threads[NTHREADS];
 int main() {
    int i;
    for (i = 0; i < NTHREADS; i++) 
-       pthread_create(&threads[i], NULL, go, (void *)i);
+       pthread_create(&threads[i], NULL, go, (intptr_t)i);
    for (i = 0; i < NTHREADS; i++) {
       printf("Thread %d returned\n", i);
        pthread_join(threads[i],NULL);
