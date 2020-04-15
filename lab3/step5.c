@@ -38,7 +38,7 @@ int main(int argc,char *argv[]){
        //scanf("%s", buff);
     
       //takes input that is "/etc/passwd" and pass into below
-       execlp("cat", "cat", buff, NULL);//cat prints out file contents
+       execlp("cat", "cat", buff[1], NULL);//cat prints out file contents
      
       exit(0);
    }
