@@ -34,11 +34,16 @@ int main(int argc,char *argv[]){
       dup2(fds[1], 1);
        close(fds[0]);
     
-
-       //scanf("%s", buff);
+       char myString[60];
+       while((count=read(fds[0],buff,60))>0){
+          for(i=0;i<count;i++){
+              myString[i] = buff+i;
+          }
+          printf("\n test \n");
+      }
     
       //takes input that is "/etc/passwd" and pass into below
-       execlp("cat", "cat", buff[1], NULL);//cat prints out file contents
+       execlp("cat", "cat", myString, NULL);//cat prints out file contents
      
       exit(0);
    }
