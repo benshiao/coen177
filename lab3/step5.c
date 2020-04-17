@@ -41,13 +41,9 @@ int main(int argc,char *argv[]){
          once = 5;
          printf("%s",buff);
          execlp("cat", "cat", buff, NULL);//cat prints out file contents
-         
-      exit(0);
       }
-//       dup2(fds[1], 1);
-//       close(fds[0]);
-//       close(fds[0]);
-//       close(fds[1]);
+       close(fds[0]);
+       close(fds[1]);
       exit(0);
    }
   else{    
