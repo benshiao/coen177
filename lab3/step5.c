@@ -42,8 +42,11 @@ int main(int argc,char *argv[]){
           for(i=0;i<count;i++){
               write(1,buff+i,1);
           }
-          printf(fds[0]);
+          printf("\n");
       }  
+    for(i=1;i<argc;i++){
+         write(fds[1],argv[i],strlen(argv[i]));
+      }
     
     dup2(fds[1], 1);
       close(fds[0]);
