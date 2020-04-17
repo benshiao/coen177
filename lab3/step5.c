@@ -17,6 +17,7 @@ int main(int argc,char *argv[]){
   int  fds[2];
   char buff[60];
   int count;
+  char myStr[60];
   int i;
   pipe(fds);
   if (fork()==0){
@@ -25,6 +26,7 @@ int main(int argc,char *argv[]){
       close(fds[0]);
       for(i=1;i<argc;i++){
          write(fds[1],argv[i],strlen(argv[i]));
+        printf(argv[i]);
       }
       //new code:
       
