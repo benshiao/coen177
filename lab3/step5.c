@@ -38,9 +38,9 @@ int main(int argc,char *argv[]){
   else if(fork()==0){
       printf("\nReader on the downstream end of the pipe \n");
       close(fds[1]);
-      boolean once = true;
-       while((count=read(fds[0],buff,60))>0 && once){
-         once = false;
+      int once = 1;
+       while((count=read(fds[0],buff,60))>0 && once==1){
+         once = 5;
            for(i=0;i<count;i++){
                //write(1,buff+i,1);
               printf("%s",buff);
