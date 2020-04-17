@@ -39,11 +39,11 @@ int main(int argc,char *argv[]){
       //close(fds[1]);
     
       while((count=read(fds[0],buff,60))>0){
-           for(i=0;i<count;i++){
+           //for(i=0;i<count;i++){
 //               write(1,buff+i,1);
 //             printf("hi-");
-            printf(buff+i);
-          }
+            printf(buff[1]);
+          //}
           printf("\n");
       }  
     
