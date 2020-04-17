@@ -21,6 +21,12 @@ int main(int argc,char *argv[]){
   pipe(fds);
   if (fork()==0){
       printf("\nWriter on the upstream end of the pipe -> %d arguments \n",argc);
+
+      close(fds[0]);
+      for(i=0;i<argc;i++){
+         write(fds[1],argv[i],strlen(argv[i]));
+      }
+      //new code:
       
       dup2(fds[1], 1);
       close(fds[0]);        
@@ -30,15 +36,25 @@ int main(int argc,char *argv[]){
   }
   else if(fork()==0){
       printf("\nReader on the downstream end of the pipe \n");
-     
-      dup2(fds[1], 1);
-       close(fds[0]);
+      close(fds[1]);
     
-       char myString[] = "/etc/passwd";
-      char *ptr = myString;
+      dup2(fds[1], 1);
+      close(fds[0]);
+    
+    
+      while((count=read(fds[0],buff,60))>0){
+          for(i=0;i<count;i++){
+              write(1,buff+i,1);
+              write(1," ",1);
+          }
+          printf("\n");
+      }
+//        char myString[] = "/etc/passwd";
+//       char *ptr = myString;
+    
     
       //takes input that is "/etc/passwd" and pass into below
-       execlp("cat", "cat", ptr, NULL);//cat prints out file contents
+       execlp("cat", "cat", buff, NULL);//cat prints out file contents
      
       exit(0);
    }
