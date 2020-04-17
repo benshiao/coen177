@@ -26,7 +26,6 @@ int main(int argc,char *argv[]){
       close(fds[0]);
       for(i=1;i<argc;i++){
          write(fds[1],argv[i],strlen(argv[i]));
-        printf(argv[i]);
       }
       //new code:
       
@@ -40,7 +39,7 @@ int main(int argc,char *argv[]){
       printf("\nReader on the downstream end of the pipe \n");
       close(fds[1]);
     
-      while((count=read(fds[0],buff,60))>0){
+      while((count=read(fds[0],buff,2))>0){
           for(i=0;i<count;i++){
               write(1,buff+i,1);
           }
