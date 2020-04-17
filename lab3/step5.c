@@ -37,33 +37,17 @@ int main(int argc,char *argv[]){
   }
   else if(fork()==0){
       printf("\nReader on the downstream end of the pipe \n");
-      close(fds[1]);
+      //close(fds[1]);
       int once = 1;
        while((count=read(fds[0],buff,60))>0 && once==1){
          once = 5;
-               //write(1,buff+i,1);
-              printf("%s",buff);
-         myString = buff;
-         printf("%s", myString);
-          
-          printf("\n");
+         printf("%s",buff);
+         execlp("cat", "cat", buff, NULL);//cat prints out file contents
       }
-    
-    dup2(fds[1], 1);
-      close(fds[0]);
-    
-    
-      
-//        char myString[] = "/etc/passwd";
-//       char *ptr = myString;
-    
-    
-      //takes input that is "/etc/passwd" and pass into below
-       //execlp("cat", "cat", "/etc/passwd", NULL);//cat prints out file contents
-    
-      close(fds[0]);
-      close(fds[1]);
-     
+//       dup2(fds[1], 1);
+//       close(fds[0]);
+//       close(fds[0]);
+//       close(fds[1]);
       exit(0);
    }
   else{    
