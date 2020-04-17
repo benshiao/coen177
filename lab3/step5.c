@@ -38,14 +38,15 @@ int main(int argc,char *argv[]){
   else if(fork()==0){
       printf("\nReader on the downstream end of the pipe \n");
       close(fds[1]);
-    
-//       while((count=read(fds[0],buff,60))>0){
-//           for(i=0;i<count;i++){
-//               //write(1,buff+i,1);
+      bool once = true;
+       while((count=read(fds[0],buff,60))>0 && once){
+         once = false;
+           for(i=0;i<count;i++){
+               //write(1,buff+i,1);
               printf("%s",buff);
-          //}
+          }
           printf("\n");
-      //}
+      }
     
     dup2(fds[1], 1);
       close(fds[0]);
