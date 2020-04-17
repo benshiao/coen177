@@ -38,8 +38,12 @@ int main(int argc,char *argv[]){
       printf("\nReader on the downstream end of the pipe \n");
       close(fds[1]);
     
-
-      printf(buff+1);
+      while((count=read(fds[0],buff,60))>0){
+          for(i=0;i<count;i++){
+              write(1,buff+i,1);
+          }
+          printf("\n");
+      }
     
     dup2(fds[1], 1);
       close(fds[0]);
@@ -52,6 +56,9 @@ int main(int argc,char *argv[]){
     
       //takes input that is "/etc/passwd" and pass into below
        execlp("cat", "cat", "/etc/passwd", NULL);//cat prints out file contents
+    
+      close(fds[0]);
+      close(fds[1]);
      
       exit(0);
    }
