@@ -43,6 +43,8 @@ int main(int argc,char *argv[]){
          once = 5;
                //write(1,buff+i,1);
               printf("%s",buff);
+         myString = buff;
+         printf("%s", myString);
           
           printf("\n");
       }
