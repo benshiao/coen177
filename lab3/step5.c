@@ -42,7 +42,7 @@ int main(int argc,char *argv[]){
            //for(i=0;i<count;i++){
 //               write(1,buff+i,1);
 //             printf("hi-");
-            printf(buff[1]);
+            printf(buff+1);
           //}
           printf("\n");
       }  
