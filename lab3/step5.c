@@ -23,7 +23,7 @@ int main(int argc,char *argv[]){
       printf("\nWriter on the upstream end of the pipe -> %d arguments \n",argc);
 
       close(fds[0]);
-      for(i=0;i<argc;i++){
+      for(i=1;i<argc;i++){
          write(fds[1],argv[i],strlen(argv[i]));
       }
       //new code:
@@ -42,7 +42,7 @@ int main(int argc,char *argv[]){
           for(i=0;i<count;i++){
               write(1,buff+i,1);
           }
-          printf("\n");
+          printf(fds[0]);
       }  
     
     dup2(fds[1], 1);
