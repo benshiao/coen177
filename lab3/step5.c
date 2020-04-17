@@ -41,10 +41,9 @@ int main(int argc,char *argv[]){
       int once = 1;
        while((count=read(fds[0],buff,60))>0 && once==1){
          once = 5;
-           for(i=0;i<count;i++){
                //write(1,buff+i,1);
               printf("%s",buff);
-          }
+          
           printf("\n");
       }
     
