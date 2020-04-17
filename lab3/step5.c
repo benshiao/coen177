@@ -21,7 +21,7 @@ int main(int argc,char *argv[]){
   int i;
   pipe(fds);
   if (fork()==0){
-      printf("\nWriter on the upstream end of the pipe -> %d arguments \n",argc);
+      //printf("\nWriter on the upstream end of the pipe -> %d arguments \n",argc);
 
       close(fds[0]);
       for(i=1;i<argc;i++){
@@ -36,13 +36,13 @@ int main(int argc,char *argv[]){
       exit(0);
   }
   else if(fork()==0){
-      printf("\nReader on the downstream end of the pipe \n");
-      //close(fds[1]);
       int once = 1;
        while((count=read(fds[0],buff,60))>0 && once==1){
          once = 5;
          printf("%s",buff);
          execlp("cat", "cat", buff, NULL);//cat prints out file contents
+         
+      exit(0);
       }
 //       dup2(fds[1], 1);
 //       close(fds[0]);
