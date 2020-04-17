@@ -57,7 +57,7 @@ int main(int argc,char *argv[]){
     
     
       //takes input that is "/etc/passwd" and pass into below
-       execlp("cat", "cat", "/etc/passwd", NULL);//cat prints out file contents
+       //execlp("cat", "cat", "/etc/passwd", NULL);//cat prints out file contents
     
       close(fds[0]);
       close(fds[1]);
