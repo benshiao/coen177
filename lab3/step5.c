@@ -31,7 +31,7 @@ int main(int argc,char *argv[]){
       
       dup2(fds[1], 1);
       close(fds[0]);        
-      //execlp("grep", "grep", "root", NULL);
+      execlp("grep", "grep", "root", NULL);
       
       exit(0);
   }
