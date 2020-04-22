@@ -27,15 +27,15 @@ int main() {
     static int i;	
 //filling in matrix A---------------------
     srand(time(NULL));
-    for (int i = 0; i < N; i++)
+    for (int k = 0; k < N; k++)
 	for (int j = 0; j < M; j++)
-	    matrixA[i][j] = rand();
+	    matrixA[k][j] = rand();
 	
 //filling in matrix B--------------------	
     srand(time(NULL));
-    for (int i = 0; i < M; i++)
+    for (int k = 0; k < M; k++)
 	for (int j = 0; j < L; j++)
-	    matrixB[i][j] = rand();
+	    matrixB[k][j] = rand();
 
 //-------------------------------	
     for (i = 0; i < NTHREADS; i++){
