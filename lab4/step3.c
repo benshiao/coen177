@@ -47,7 +47,12 @@ int main() {
 	}
 	    printf("\n");
     }
-
+	for (k = 0; k < M; k++){
+	for (j = 0; j < L; j++){
+	    printf(" %10.5d ",matrixB[k][j]);
+	}
+	    printf("\n");
+    }
 //-------------------------------	
     for (i = 0; i < NTHREADS; i++){
        int *i2 = malloc(sizeof(*i2));
