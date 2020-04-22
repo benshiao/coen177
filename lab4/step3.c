@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <stdlib.h>
 
 #define NTHREADS 20
 
@@ -18,7 +19,7 @@ void *go(void *);
 int M = 3;
 int N = 3;
 int L = 3;
-pthread_t threads[M];
+pthread_t threads[NTHREADS];
 
 double matrixA[N][M];
 double matrixB[M][L];
