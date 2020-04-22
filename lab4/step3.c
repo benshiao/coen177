@@ -28,7 +28,7 @@ double matrixC[M][M];
 
 int main() {
     static int i;
-    int k,j,r;
+    double k,j,r;
 //filling in matrix A---------------------
     srand(time(NULL));
     for ( k = 0; k < N; k++){
@@ -37,8 +37,6 @@ int main() {
 	    printf(" %5.5d  ",r);
 	    matrixA[k][j] = r;
 	    //printf(" kj %5.5d %5.5d ",k,j);
-		
-    srand(time(NULL));
 	}
 	    printf("\n");
     }
