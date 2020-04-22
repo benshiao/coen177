@@ -1,7 +1,7 @@
 /* Name: Benjamin Shiao
 # Date: 4/21/20
 # Title: Lab4 – Developing multi-threaded applications
-# Description: Step one original code threadhello
+# Description: Step three using threads to calculate a matrix product
 */
 /**************************************************************
 *	threadHello.c - simple multi-threaded program.            *
@@ -34,7 +34,7 @@ int main() {
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
 		r = rand();
-	    printf(" %5.5d  ",r);
+	    printf(" %5.5f  ",r);
 	    matrixA[k][j] = r;
 	    //printf(" kj %5.5d %5.5d ",k,j);
 	}
@@ -42,15 +42,15 @@ int main() {
     }
 	printf("\n");
 
-	    printf(" %10.5d ",matrixA[0][0]);
-	    printf(" %10.5d ",matrixA[0][1]);
-	    printf(" %10.5d ",matrixA[0][2]);
-	    printf(" %10.5d ",matrixA[1][0]);
-	    printf(" %10.5d ",matrixA[1][1]);
-	    printf(" %10.5d ",matrixA[1][2]);
-	    printf(" %10.5d ",matrixA[2][0]);
-	    printf(" %10.5d ",matrixA[2][1]);
-	    printf(" %10.5d ",matrixA[2][2]);
+	    printf(" %10.5f ",matrixA[0][0]);
+	    printf(" %10.5f ",matrixA[0][1]);
+	    printf(" %10.5f ",matrixA[0][2]);
+	    printf(" %10.5f ",matrixA[1][0]);
+	    printf(" %10.5f ",matrixA[1][1]);
+	    printf(" %10.5f ",matrixA[1][2]);
+	    printf(" %10.5f ",matrixA[2][0]);
+	    printf(" %10.5f ",matrixA[2][1]);
+	    printf(" %10.5f ",matrixA[2][2]);
 	
 	printf("\n");
 //filling in matrix B--------------------	
