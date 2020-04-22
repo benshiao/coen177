@@ -16,9 +16,9 @@
 
 void *go(void *);
 
-int M = 3;
-int N = 3;
-int L = 3;
+#define M 3
+#define N 3
+#define L 3
 pthread_t threads[NTHREADS];
 
 double matrixA[N][M];
