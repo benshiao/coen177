@@ -24,7 +24,7 @@ pthread_t threads[M];
 
 double matrixA[N][M];
 double matrixB[M][L];
-double matrixC[M][M];
+double matrixC[N][L];
 
 int main() {
     static int i;
@@ -58,8 +58,8 @@ int main() {
 	printf("Thread %d returned \n", i);
     }
     
-    for ( k = 0; k < M; k++){
-	for (j = 0; j < M; j++){
+    for ( k = 0; k < N; k++){
+	for (j = 0; j < L; j++){
 		printf(" %.3f ",matrixC[k][j]);
 	}
 	printf("\n");
