@@ -33,7 +33,7 @@ int main() {
     srand(time(NULL));
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
-	    matrixA[k][j] = rand();
+	    matrixA[k][j] = 5;
 	}
     }
 	
@@ -42,7 +42,7 @@ int main() {
     srand(time(NULL));
     for (k = 0; k < M; k++){
 	for (j = 0; j < L; j++){
-	    matrixB[k][j] = rand();
+	    matrixB[k][j] = 5;
 	    printf(" %10.5f ",matrixB[k][j]);
 	}
 	printf("\n");
