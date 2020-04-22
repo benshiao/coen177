@@ -53,7 +53,7 @@ int main() {
     
     for ( k = 0; k < M; k++){
 	for (j = 0; j < M; j++){
-		printf(" %.3d ",matrixC[k][j]);
+		printf(" %20.3d ",matrixC[k][j]);
 	}
 	printf("\n");
     }
