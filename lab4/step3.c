@@ -30,15 +30,23 @@ int main() {
     int k,j;
 //filling in matrix A---------------------
     srand(time(NULL));
-    for ( k = 0; k < N; k++)
-	for (j = 0; j < M; j++)
+    for ( k = 0; k < N; k++){
+	for (j = 0; j < M; j++){
 	    matrixA[k][j] = rand();
+	    printf(" %d ",matrixA[k][j]);
+	}
+	    printf("\n");
+    }
 	
 //filling in matrix B--------------------	
     srand(time(NULL));
-    for (k = 0; k < M; k++)
-	for (j = 0; j < L; j++)
+    for (k = 0; k < M; k++){
+	for (j = 0; j < L; j++){
 	    matrixB[k][j] = rand();
+	    printf(" %d ",matrixA[k][j]);
+	}
+	    printf("\n");
+    }
 
 //-------------------------------	
     for (i = 0; i < NTHREADS; i++){
@@ -66,7 +74,7 @@ void *go(void *arg) {
     	double temp = 0;
     	for ( k = 0; k < M; k++){
 		temp += matrixA[*(int *)arg][k] * matrixB[k][j];
-		printf("---a:%d b:%d--",matrixA[*(int *)arg][k], matrixB[k][j]);
+		//printf("---a:%d b:%d--",matrixA[*(int *)arg][k], matrixB[k][j]);
 	}
     	matrixC[*(int *)arg][j] = temp;
       	}
