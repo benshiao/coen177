@@ -23,6 +23,7 @@ pthread_t threads[M];
 
 double matrixA[N][M];
 double matrixB[M][L];
+double matrixC[M][M];
 
 int main() {
     static int i;
@@ -48,6 +49,13 @@ int main() {
     for (i = 0; i < NTHREADS; i++) {
         pthread_join(threads[i],NULL);
 	printf("Thread %d returned \n", i);
+    }
+    
+    for ( k = 0; k < M; k++){
+	for (j = 0; j < M; j++){
+		printf(" %d ",matrixC[k][j]);
+	}
+	printf("\n");
     }
     printf("Main thread done.\n");
 }
