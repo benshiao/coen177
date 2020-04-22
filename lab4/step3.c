@@ -33,7 +33,7 @@ int main() {
     srand(time(NULL));
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
-	    matrixA[k][j] = rand();
+	    matrixA[k][j] = rand()%10;
 	    printf(" %.1f ",matrixA[k][j]);
 	}
 	printf("\n");
@@ -41,10 +41,10 @@ int main() {
 	
 	printf("\n");
 //filling in matrix B--------------------	
-    srand(time(0));
+    srand(time(NULL));
     for (k = 0; k < M; k++){
 	for (j = 0; j < L; j++){
-	    matrixB[k][j] = rand();
+	    matrixB[k][j] = rand()%10;
 	    printf(" %.1f ",matrixB[k][j]);
 	}
 	printf("\n");
