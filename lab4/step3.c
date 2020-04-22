@@ -65,7 +65,7 @@ void *go(void *arg) {
 	for ( j = 0; j < L; j++){
     	double temp = 0;
     	for ( k = 0; k < M; k++){
-		temp += matrixA[i][k] * matrixB[k][j];
+		temp += matrixA[*(int *)arg][k] * matrixB[k][j];
 	}
     	matrixC[*(int *)arg][j] = temp;
       	}
