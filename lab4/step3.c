@@ -33,7 +33,7 @@ int main() {
     srand(time(NULL));
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
-	    matrixA[k][j] = r;
+	    matrixA[k][j] = rand();
 	}
     }
 	
