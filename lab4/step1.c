@@ -1,8 +1,8 @@
   
 /* Name: Benjamin Shiao
-# Date: 4/14/20
-# Title: Lab3 – Pthreads and inter-process Communication – Pipes
-# Description: Step one original code
+# Date: 4/21/20
+# Title: Lab4 – Developing multi-threaded applications
+# Description: Step one original code threadhello
 */
 /**************************************************************
 *	threadHello.c - simple multi-threaded program.            *
