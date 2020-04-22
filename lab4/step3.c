@@ -40,8 +40,7 @@ int main() {
     }
 	
 	printf("\n");
-//filling in matrix B--------------------	
-    srand(time(NULL));
+//filling in matrix B--------------------
     for (k = 0; k < M; k++){
 	for (j = 0; j < L; j++){
 	    matrixB[k][j] = rand()%10;
