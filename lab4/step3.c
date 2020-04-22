@@ -37,6 +37,8 @@ int main() {
 	    printf(" %5.5d  ",r);
 	    matrixA[k][j] = r;
 	    //printf(" kj %5.5d %5.5d ",k,j);
+		
+    srand(time(NULL));
 	}
 	    printf("\n");
     }
