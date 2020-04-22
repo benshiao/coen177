@@ -4,32 +4,31 @@
 # Title: Lab3 – Pthreads and inter-process Communication – Pipes
 # Description: Step one original code
 */
-/*Sample C program for Lab assignment 3*/
+/**************************************************************
+*	threadHello.c - simple multi-threaded program.            *
+*   compile with: >gcc -lp threadHello.c -o threadHello       *                                              *
+**************************************************************/
 #include <stdio.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-//main
+#include <pthread.h>
+
+#define NTHREADS 20
+
+void *go(void *);
+pthread_t threads[NTHREADS];
+
 int main() {
-   int fds[2];
-   pipe(fds);
-   /*child 1 duplicates downstream into stdin */
-   if (fork() == 0) {
-       dup2(fds[0], 0);
-       close(fds[1]);
-       execlp("more", "more", 0);
-   }
-   /*child 2 duplicates upstream into stdout */
-   else if (fork() == 0) {
-       dup2(fds[1], 1);
-       close(fds[0]);
-       execlp("ls", "ls", 0);
-   }
-   else {  /*parent closes both ends and wait for children*/
-       close(fds[0]);
-       close(fds[1]);
-       wait(0);
-       wait(0);
-   }
-return 0;
+    static int i;
+    for (i = 0; i < NTHREADS; i++)  
+        pthread_create(&threads[i], NULL, go, &i);
+    for (i = 0; i < NTHREADS; i++) {
+        pthread_join(threads[i],NULL);
+	    printf("Thread %d returned \n", i);
+    }
+    printf("Main thread done.\n");
 }
+void *go(void *arg) {
+    printf("Hello from thread %d with thread ID %d \n", *(int *)arg, (int)pthread_self());
+    return (NULL);
+}
+
