@@ -10,4 +10,10 @@ The main local variable i is shared state because it passes in the address of i 
 
 Step 2: This code would print hello statements from 20 threads, numbered between 1-20, and numbered 0 should be possible. The threads say hello out of order, the thread IDs are different, sometimes negative, and the 'Main Thread done.' statement sometimes prints before all the hello prints come out. There are no return prints, as I removed them with the thread join loop. This happens because the threads run on their own, with different speeds, accessing all the same variable address of i. Without the thread join statements, the main thread is able to complete even before the other threads start, which is the cause of 'main thread done' printing before all other threads print hello.
 
-Step 3:
+Step 3: In calculating the product of two matrices, after initalizing the first two using rand(), srand(), and for loops, I had to create threads for calculating each row in the product. This required the following code:
+for (i = 0; i < NTHREADS; i++){
+     int *i2 = malloc(sizeof(*i2));
+     *i2 = i;
+     pthread_create(&threads[i], NULL, go, i2);
+  }
+ The code above allowed me to pass in a variable that was seperate from each thread, so initally the value passed in the thread creation had nothing to do with another thread creation. This solved the issue of duplicate prints in step 1, caused by passing in the address of a variable, as all threads share the same address space. This allowed me to access the proper rows and columns in the thread function go(), where I calculated a row at a time for the dot product. One mistake I made was the thread creation for loop was only from 0-19 at first, when I set the matrix size to 1024. After updating the loop, everything worked nicely. Another imporant part was to printf with %f, not %d, to see the proper output. My code sucessfully calculated the product.
