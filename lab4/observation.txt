@@ -1,35 +1,11 @@
-# Name: Benjamin Shiao
-# Date: 4/14/20
-# Title: Lab3 – Pthreads and inter-process Communication – Pipes
-# Description: Observation file for lab 3
+/* Name: Benjamin Shiao
+# Date: 4/21/20
+# Title: Lab4 – Developing multi-threaded applications
+# Description: report on lab 4
+*/
 
-Step 1: Running the C file in step 1 basically just ran the ls linux command.
+Step 1: Running the original helloThread.c file printed hello and return statements from 20 threads. The return statements are numbered 0-19, but the hello statements are random numbers between 0-19, with some numbers inbetween missing or duplicates of each other. The hello and return statements were a bit shuffled as well. Running it multiple times had similar results but the hello thread numbers and thread IDs were different(sometimes negative), with the thread numbers following the pattern I mentioned. If you are running some other demanding process while running this program, the full output from all 20 threads take longer to print/run/complete.
+The go() function arg paramter is for variables in threads that are seperate for each thread, storing them on the serpate stacks for each thread. While address space and Heap are shared for different threads, their stacks are seperate, so each thread creates a copy of a variable passed in args, which are all copies of an address in this code.
+The main local variable i is shared state because it passes in the address of i into all the threads, so all the threads point at the same variable i. It is a static variable which is stored in the data region by the compiler.
 
-Step 2: Running the C file in step 2 would print "writer on the upstream end of the pipe <number of arguements>" and also print the command and all arguements spaced out character by character after "reader on the downstream end of the pipe. For example, i named the file step2.c and when i ran it as "./step2 hi dog" it printed "Writer on the upstream end of the pipe -> 3 arguments \n\nReader on the downstream end of the pipe\n. / s t e p 2 h i d o g". It seems like this file takes my input arguements, prints how many it sees and then it prints my input with the spaced out format.
-
-Step 3: I edited the code to the writer process passes the output of “ls” command to the upstream end of the pipe and when I ran my resulting file in step 3, it would print out the same output as linux command ls, but it spaced out every character with a space and didn't print my extra input/arguements, but did print the number of arguements I gave it. Now instead of printing my input, this file takes input from the ls command. While it still counts and prints my number of arguements, it not longer outputs my input with the spaced out format.
-example, running "./step3 hello" printed the following:
-Writer on the upstream end of the pipe -> 2 arguments 
-
-Reader on the downstream end of the pipe 
-o b s e r v a t i o n . t x t 
- s t e p 1 
- s t e p 1 . c 
- s t e p 2 
- s t e p 2 . c 
- s t e p 3 
- s t e p 3 . c 
- 
- Step 4: I made a C file that would run cat /etc/passwd | grep root, and the output was the same as if I ran the command in linux. It would find where root was and print the file with it.
- It ouptut the following as expected:
- root:x:0:0:root:/root:/bin/bash
-rootbash:x:0:0:root:/root:/bin/bash
-operator:x:11:0:operator:/root:/sbin/nologin
- 
- 
- Step 5: I got the code in step 4 and edited it it would take in input to run a linux command. To be specific, it takes an argument from the "./step5 <arguement>" linux command where "/etc/passwd" is my command, serving as producer-consumer message communication. This would output the same thing as 'cat /etc/passwd'. It is producer consumer because I passed in the file name and the pipe/memory/buffer is shared by read and write. 
- 
- 
- Step 6: Running the file creates 10 threads, numbered 0-9, and has the main thread. Basically I get Hellos from threads of random numbers that aren't properly ordered or covering all iterations 0-9, then some threads start returning while other threads are still saying hello, then the last few threads return. The Hello from thread iterations numbers are not propery numbered while the Thread return iterations are properly numbered. The Hello statements have duplicates of some iteration numbers and are missing others, but the thread numbers are unique. This is probably because the return threads are from the for loop number in the main() function while the Hello interation numbers are from the thread function passed in the pthread_create(&threads[i], NULL, go, &i); line of code. Because the threads share the same memory, they are accessing the same variable at address of i(&i), making the hello statements have inconsitent iteration numbers. To be specific, one run of this file had hello from thread iterations 3,6,4,4,5,3,7,0,9,8 and returns of 0-9. Because threads don't run exactly one by one, they are accessing and changing the variable i at times out of order
- 
- Step 7: I changed the paramter arguement in the thread creation from &i → (void *)i. This makes it kind of a ghost pointer/fake pointer so the thread can use the variable i that's copied/separate from other threads. Now running the edited file has 10 threads, numbers 0-9. Each thread has a properly numbered hello and return, covering all numbers 0-9 once.Some threads end before some start still. They don't run in order, but now there are no duplicates.
+Step 2:
