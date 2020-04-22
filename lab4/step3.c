@@ -58,7 +58,7 @@ int main() {
     for (k = 0; k < M; k++){
 	for (j = 0; j < L; j++){
 	    matrixB[k][j] = rand();
-	    printf(" %10.5d ",matrixB[k][j]);
+	    printf(" %10.5f ",matrixB[k][j]);
 	}
 	    printf("\n");
     }
@@ -75,7 +75,7 @@ int main() {
     
     for ( k = 0; k < M; k++){
 	for (j = 0; j < M; j++){
-		printf(" %20.3d ",matrixC[k][j]);
+		printf(" %20.3f ",matrixC[k][j]);
 	}
 	printf("\n");
     }
