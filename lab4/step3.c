@@ -42,9 +42,10 @@ int main() {
        int *i2 = malloc(sizeof(*i2));
        *i2 = i;
        pthread_create(&threads[i], NULL, go, i2);
+    }
     for (i = 0; i < NTHREADS; i++) {
         pthread_join(threads[i],NULL);
-	    printf("Thread %d returned \n", i);
+	printf("Thread %d returned \n", i);
     }
     printf("Main thread done.\n");
 }
