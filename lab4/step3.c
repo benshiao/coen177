@@ -56,9 +56,9 @@ int main() {
     }
     for (i = 0; i < NTHREADS; i++) {
         pthread_join(threads[i],NULL);
-	printf("Thread %d returned \n", i);
+	//printf("Thread %d returned \n", i);
     }
-    
+    printf("\n");
     for ( k = 0; k < N; k++){
 	for (j = 0; j < L; j++){
 		printf(" %.3f ",matrixC[k][j]);
@@ -69,7 +69,7 @@ int main() {
 }
 void *go(void *arg) {
     	int k,j;
-    	printf("Hello from thread %d with thread ID %d \n", *(int *)arg, (int)pthread_self());
+    	//printf("Hello from thread %d with thread ID %d \n", *(int *)arg, (int)pthread_self());
 	for ( j = 0; j < L; j++){
     	double temp = 0;
     	for ( k = 0; k < M; k++){
