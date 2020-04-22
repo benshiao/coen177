@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define NTHREADS 1024
 
 void *go(void *);
 
@@ -48,7 +49,7 @@ int main() {
 	printf("\n");
     }
 //-------------------------------	
-    for (i = 0; i < L; i++){
+    for (i = 0; i < NTHREADS; i++){
        int *i2 = malloc(sizeof(*i2));
        *i2 = i;
        pthread_create(&threads[i], NULL, go, i2);
