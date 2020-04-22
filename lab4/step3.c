@@ -66,7 +66,7 @@ void *go(void *arg) {
     	double temp = 0;
     	for ( k = 0; k < M; k++){
 		temp += matrixA[*(int *)arg][k] * matrixB[k][j];
-		printf("%d-----%d",matrixA[*(int *)arg][k], matrixB[k][j]);
+		printf("---a:%d b:%d--",matrixA[*(int *)arg][k], matrixB[k][j]);
 	}
     	matrixC[*(int *)arg][j] = temp;
       	}
