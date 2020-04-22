@@ -34,7 +34,7 @@ int main() {
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
 	    matrixA[k][j] = rand();
-	    printf(" %10.5d ",matrixA[k][j]);
+	    printf(" %10.5d ",matrixA[0][0]);
 	}
 	    printf("\n");
     }
