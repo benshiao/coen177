@@ -19,7 +19,7 @@ void *go(void *);
 #define M 3
 #define N 3
 #define L 3
-pthread_t threads[NTHREADS];
+pthread_t threads[M];
 
 double matrixA[N][M];
 double matrixB[M][L];
