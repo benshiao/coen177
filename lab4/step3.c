@@ -60,6 +60,15 @@ int main() {
     printf("Main thread done.\n");
 }
 void *go(void *arg) {
-    printf("Hello from thread %d with thread ID %d \n", *(int *)arg, (int)pthread_self());
-    return (NULL);
+    	int k,j;
+    	//printf("Hello from thread %d with thread ID %d \n", *(int *)arg, (int)pthread_self());
+	for ( j = 0; j < L; j++){
+    	double temp = 0;
+    	for ( k = 0; k < M; k++){
+		temp += matrixA[i][k] * matrixB[k][j];
+	}
+    	matrixC[*(int *)arg][j] = temp;
+      	}
+
+    	return (NULL);
 }
