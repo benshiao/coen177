@@ -61,7 +61,7 @@ int main() {
 }
 void *go(void *arg) {
     	int k,j;
-    	//printf("Hello from thread %d with thread ID %d \n", *(int *)arg, (int)pthread_self());
+    	printf("Hello from thread %d with thread ID %d \n", *(int *)arg, (int)pthread_self());
 	for ( j = 0; j < L; j++){
     	double temp = 0;
     	for ( k = 0; k < M; k++){
@@ -69,6 +69,7 @@ void *go(void *arg) {
 	}
     	matrixC[*(int *)arg][j] = temp;
       	}
+	
 
     	return (NULL);
 }
