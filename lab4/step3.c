@@ -12,7 +12,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-#define NTHREADS 20
+#define NTHREADS 3
 
 void *go(void *);
 
