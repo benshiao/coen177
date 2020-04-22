@@ -30,17 +30,16 @@ int main() {
     static int i;
     int k,j;
 //filling in matrix A---------------------
-    srand(time(0));
+    srand(time(NULL));
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
 	    matrixA[k][j] = rand();
-	    printf(" %10.5d ",rand());
 	}
 	    printf("\n");
     }
 	
 //filling in matrix B--------------------	
-    srand(time(0));
+    srand(time(NULL));
     for (k = 0; k < M; k++){
 	for (j = 0; j < L; j++){
 	    matrixB[k][j] = rand();
