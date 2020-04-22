@@ -29,29 +29,13 @@ double matrixC[M][M];
 int main() {
     static int i;
     int k,j;
-    double r;
 //filling in matrix A---------------------
     srand(time(NULL));
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
-		r = rand();
-	    printf(" %5.5f  ",r);
 	    matrixA[k][j] = r;
-	    //printf(" kj %5.5d %5.5d ",k,j);
 	}
-	    printf("\n");
     }
-	printf("\n");
-
-	    printf(" %10.5f ",matrixA[0][0]);
-	    printf(" %10.5f ",matrixA[0][1]);
-	    printf(" %10.5f ",matrixA[0][2]);
-	    printf(" %10.5f ",matrixA[1][0]);
-	    printf(" %10.5f ",matrixA[1][1]);
-	    printf(" %10.5f ",matrixA[1][2]);
-	    printf(" %10.5f ",matrixA[2][0]);
-	    printf(" %10.5f ",matrixA[2][1]);
-	    printf(" %10.5f ",matrixA[2][2]);
 	
 	printf("\n");
 //filling in matrix B--------------------	
@@ -61,7 +45,7 @@ int main() {
 	    matrixB[k][j] = rand();
 	    printf(" %10.5f ",matrixB[k][j]);
 	}
-	    printf("\n");
+	printf("\n");
     }
 //-------------------------------	
     for (i = 0; i < NTHREADS; i++){
@@ -89,7 +73,6 @@ void *go(void *arg) {
     	double temp = 0;
     	for ( k = 0; k < M; k++){
 		temp += matrixA[*(int *)arg][k] * matrixB[k][j];
-		//printf("---a:%d b:%d--",matrixA[*(int *)arg][k], matrixB[k][j]);
 	}
     	matrixC[*(int *)arg][j] = temp;
       	}
