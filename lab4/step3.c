@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define NTHREADS 3
 
@@ -27,7 +28,7 @@ double matrixC[M][M];
 
 int main() {
     static int i;
-    int k,j,r;
+    int k,j;
 //filling in matrix A---------------------
     srand(time(0));
     for ( k = 0; k < N; k++){
@@ -42,14 +43,7 @@ int main() {
     srand(time(0));
     for (k = 0; k < M; k++){
 	for (j = 0; j < L; j++){
-	    r = rand();
-	    matrixB[k][j] = r;
-	    printf(" %10.5d ",matrixB[k][j]);
-	}
-	    printf("\n");
-    }
-	for (k = 0; k < M; k++){
-	for (j = 0; j < L; j++){
+	    matrixB[k][j] = rand();
 	    printf(" %10.5d ",matrixB[k][j]);
 	}
 	    printf("\n");
