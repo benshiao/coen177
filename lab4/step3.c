@@ -53,7 +53,7 @@ int main() {
     
     for ( k = 0; k < M; k++){
 	for (j = 0; j < M; j++){
-		printf(" %d ",matrixC[k][j]);
+		printf(" %d.3 ",matrixC[k][j]);
 	}
 	printf("\n");
     }
