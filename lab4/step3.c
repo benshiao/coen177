@@ -34,13 +34,22 @@ int main() {
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
 	    matrixA[k][j] = rand();
+	    printf(" %10.5d ",matrixA[k][j]);
+	}
+	    printf("\n");
+    }
+	printf("\n");
+
 	    printf(" %10.5d ",matrixA[0][0]);
 	    printf(" %10.5d ",matrixA[0][1]);
 	    printf(" %10.5d ",matrixA[0][2]);
 	    printf(" %10.5d ",matrixA[1][0]);
-	}
-	    printf("\n");
-    }
+	    printf(" %10.5d ",matrixA[1][1]);
+	    printf(" %10.5d ",matrixA[1][2]);
+	    printf(" %10.5d ",matrixA[2][0]);
+	    printf(" %10.5d ",matrixA[2][1]);
+	    printf(" %10.5d ",matrixA[2][2]);
+	
 	printf("\n");
 //filling in matrix B--------------------	
     srand(time(NULL));
