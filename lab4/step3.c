@@ -29,7 +29,7 @@ int main() {
     static int i;
     int k,j;
 //filling in matrix A---------------------
-    srand(time(NULL));
+    srand(time(0));
     for ( k = 0; k < N; k++){
 	for (j = 0; j < M; j++){
 	    matrixA[k][j] = rand();
@@ -39,7 +39,7 @@ int main() {
     }
 	
 //filling in matrix B--------------------	
-    srand(time(NULL));
+    srand(time(0));
     for (k = 0; k < M; k++){
 	for (j = 0; j < L; j++){
 	    matrixB[k][j] = rand();
