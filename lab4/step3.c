@@ -24,17 +24,18 @@ double matrixA[N][M];
 double matrixB[M][L];
 
 int main() {
-    static int i;	
+    static int i;
+    int k,j;
 //filling in matrix A---------------------
     srand(time(NULL));
-    for (int k = 0; k < N; k++)
-	for (int j = 0; j < M; j++)
+    for ( k = 0; k < N; k++)
+	for (j = 0; j < M; j++)
 	    matrixA[k][j] = rand();
 	
 //filling in matrix B--------------------	
     srand(time(NULL));
-    for (int k = 0; k < M; k++)
-	for (int j = 0; j < L; j++)
+    for (k = 0; k < M; k++)
+	for (j = 0; j < L; j++)
 	    matrixB[k][j] = rand();
 
 //-------------------------------	
