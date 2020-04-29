@@ -26,7 +26,7 @@ pthread_mutex_t full;
 void* consume(void* arg) { 
  do{
   pthread_mutex_lock(&mutex); //entry section
-  while(/*buffer is full*/){
+  while(full/*buffer is full*/){
     pthread_cond_wait(&empty, &mutex);
   }
   printf("Adding the %d item to buffer, %d\n", (int)arg, buffer[(int)arg]); //critical section 
@@ -42,7 +42,7 @@ void* consume(void* arg) {
 void* produce(void* arg) { 
  do{
   pthread_mutex_lock(&mutex);
-  while(/*buffer is empty*/){
+  while(empty/*buffer is empty*/){
     pthread_cond_wait(&full, &mutex);
   }
   printf("Removing %d item, %d\n", (int)arg,buffer[(int)arg]); //critical section 
