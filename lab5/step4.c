@@ -32,8 +32,9 @@ void* produce(void* arg) {
     pthread_cond_wait(&empty, &mutex);
   }
   int temp = 1+(rand()%10);
-  printf("Adding at buffer[%d] , %d\n", (int)arg, temp); //critical section 
-  buffer[(int)arg] = temp;
+  int index = (rand()%10)
+  printf("Adding at buffer[%d] , %d\n", index, temp); //critical section 
+  buffer[index] = temp;
    sleep(1); 
   
   counter++;
@@ -49,7 +50,8 @@ void* consume(void* arg) {
   while(counter==0/*buffer is empty(check buffer array size, make counter)*/){
     pthread_cond_wait(&full, &mutex);
   }
-  printf("Consuming buffer[%d] item, %d\n", (int)arg,buffer[(int)arg]); //critical section 
+  int index = rand()%10;
+  printf("Consuming buffer[%d] item, %d\n", index,buffer[index]); //critical section 
    sleep(1); 
   counter--;
   
