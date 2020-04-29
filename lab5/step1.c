@@ -23,7 +23,7 @@ void* go(void* arg) {
 } 
 
 int main() { 
-mutex = sem_open("mutex", O_CREAT, 0644, 1);
+mutex = sem_open("mutex", O_CREATE, 0644, 1);
 static int i;
 for (i = 0; i < NTHREADS; i++)  
    pthread_create(&threads[i], NULL, go, (void *)(size_t)i);
