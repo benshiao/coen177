@@ -4,4 +4,9 @@
 # Description: report on lab 5
 */
 
-Step 1: 
+Step 1: Running the file given for step one made it so the threads critical sections aren't running on the exa
+ctly at the same time, kind of running one by one. They are not entering each other's critical sections in order, but they are returning in order. Sometimes multiple threads enter a critical section before threads return and multiple threads return before threads enter critical sections. After all threads return, it prints 'Main thread done". It differs from threadHello.c file because each critical section takes longer time to run and we dont see as many threads begin at once before any threads return. This code runs a bit more one by one with the threads, although not perfectly.
+
+Step 2: My results for my file in step 2 are very similar to that of step 1. The critical sections seem to never run together, as the entire process always lets all 10 threads wait(1) run fully. The threads entering critical sections is not always in order, but often is. Threads returning is always in order. Sometimes multiple threads return before critical sections are entered and sometimes multiple critical sections are entered before threads return. But everyone's critical section runs on their own.
+
+step3: 
