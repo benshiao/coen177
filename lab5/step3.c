@@ -26,7 +26,7 @@ void* consume(void* arg) {
  sem_wait(full);
   sem_wait(mutex); //entry section
   int index = (rand()%10);
-  printf("Consuming buffer[%d] : %d\n", index, buffer[(int)arg]); //critical section 
+  printf("Consuming buffer[%d] : %d\n", index, buffer[index]); //critical section 
   //print
    sleep(1); 
   sem_post(mutex); //exit section
