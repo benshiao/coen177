@@ -18,7 +18,7 @@
 
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
-int buffer[10] = {1,2,3,4,5,6,7,8,9,10};
+int buffer[10] = {11,22,33,44,55,66,77,88,99,100};
 sem_t *mutex; 
 sem_t *full; 
 sem_t *empty; 
@@ -27,26 +27,13 @@ void* consume(void* arg) {
  do{
  sem_wait(full);
   sem_wait(mutex); //entry section
-  printf("Thread %d Entered Critical Section.. Remove %d\n", (int)arg, buffer[(int)arg]); //critical section 
+  printf("Thread %d Entered Critical Section.. Consuming %d\n", (int)arg, buffer[(int)arg]); //critical section 
    sleep(1); 
   sem_post(mutex); //exit section
   sem_post(empty); //exit section
   
  }while(1);
   return (NULL);
- 
-//  do {
-//    wait(full)
-//    wait(mutex);
-//     ...
-//    remove next item from buffer/printing "consume this"
-//     ...
-//    signal(mutex);
-//    signal(empty);
-//     ...
-//    consume the item
-//     ...
-// } while (1);
 } 
 void* produce(void* arg) { 
  do{
@@ -58,18 +45,6 @@ void* produce(void* arg) {
   sem_post(full); //exit section
  }while(1);
   return (NULL);
-//  do {
-//   ...    
-//    produce next item  /print"produce this"   
-//    ...    
-//    wait(empty);    
-//   wait(mutex);    
-//   ...    
-//    add the item to buffer     
-//    ...    
-  // signal(mutex);    
-//   signal(full);
-//  } while (1);
 }
 
 int main() { 
