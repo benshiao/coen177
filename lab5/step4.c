@@ -12,10 +12,12 @@
 #include <pthread.h> 
 #include <fcntl.h>
 #include <semaphore.h> 
+#include <time.h>
 
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
-int buffer[10] = {11,22,33,44,55,66,77,88,99,100};
+int buffer[10];
+int counter;
 // sem_t *mutex; 
 // sem_t *full; 
 // sem_t *empty; 
@@ -23,40 +25,44 @@ pthread_mutex_t mutex;
 pthread_mutex_t empty;
 pthread_mutex_t full;
 
-void* consume(void* arg) { 
+void* producer(void* arg) { 
  do{
-  pthread_mutex_lock(&mutex); //entry section
-  while(full/*buffer is full*/){
-    pthread_cond_wait(&empty, &mutex);
+  pthread_mutex_lock(mutex); //entry section
+  while(counter>=10/*buffer is full(check buffer array size)*/){
+    pthread_cond_wait(empty, mutex);
   }
-  printf("Adding the %d item to buffer, %d\n", (int)arg, buffer[(int)arg]); //critical section 
+  int temp = 1+(rand()%10);
+  printf("Adding at buffer[%d] , %d\n", (int)arg, temp); //critical section 
+  buffer[(int)arg] = temp;
    sleep(1); 
   
-  
-  pthread_cond_signal(&full);
-  pthread_mutex_unlock(&mutex);
+  counter++;
+  pthread_cond_signal(full);
+  pthread_mutex_unlock(mutex);
   
  }while(1);
   return (NULL);
 } 
-void* produce(void* arg) { 
+void* consumer(void* arg) { 
  do{
-  pthread_mutex_lock(&mutex);
-  while(empty/*buffer is empty*/){
-    pthread_cond_wait(&full, &mutex);
+  pthread_mutex_lock(mutex);
+  while(counter==0/*buffer is empty(check buffer array size, make counter)*/){
+    pthread_cond_wait(full, mutex);
   }
-  printf("Removing %d item, %d\n", (int)arg,buffer[(int)arg]); //critical section 
+  printf("Consuming buffer[%d] item, %d\n", (int)arg,buffer[(int)arg]); //critical section 
    sleep(1); 
+  counter--;
   
-  
-  pthread_cond_signal(&empty);
-  pthread_mutex_unlock(&mutex);
+  pthread_cond_signal(empty);
+  pthread_mutex_unlock(mutex);
   
  }while(1);
   return (NULL);
 }
 
 int main() { 
+ counter = 0;
+ srand(time(NULL));
  pthread_mutex_destroy(&mutex);
  pthread_mutex_destroy(&empty);
  pthread_mutex_destroy(&full);
