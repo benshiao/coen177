@@ -1,12 +1,8 @@
-//Shared data: semaphore full, empty, mutex;
-//pool of n buffers, each can hold one item
-//mutex provides mutual exclusion to the buffer pool
-//empty and full count the number of empty and full buffers
-//Initially: full = 0, empty = n, mutex = 1
+
 /* Name: Benjamin Shiao
 # Date: 4/28/20
 # Title: Lab5 – Synchronization using semaphores, lock, and condition variables
-# Description: Modified version of file given for step1 to run using mutex locks instead of semaphores.
+# Description: Program to solve producer consumer problem using semaphores. Five producers and Five consumer threads are made.
 */
 // Thread Sychronization
 
