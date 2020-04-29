@@ -18,7 +18,7 @@
 
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
-int buffer[10];
+int buffer[10] = {1,2,3,4,5,6,7,8,9,10};
 sem_t *mutex; 
 sem_t *full; 
 sem_t *empty; 
@@ -76,7 +76,6 @@ int main() {
 mutex = sem_open("mutex", O_CREAT, 0644, 1);
 full = sem_open("full", O_CREAT, 0644, 0);
 empty = sem_open("empty", O_CREAT, 0644, 10);
- buffer = {1,2,3,4,5,6,7,8,9,10);
 static int i;
 for (i = 0; i < NTHREADS; i++){ //can try seperate numbers, like more than 1 con and 1 prod
    if(i%2==0)
