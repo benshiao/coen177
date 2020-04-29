@@ -27,9 +27,9 @@ pthread_mutex_t full;
 
 void* produce(void* arg) { 
  do{
-  pthread_mutex_lock(mutex); //entry section
+  pthread_mutex_lock(&mutex); //entry section
   while(counter>=10/*buffer is full(check buffer array size)*/){
-    pthread_cond_wait(empty, mutex);
+    pthread_cond_wait(&empty, &mutex);
   }
   int temp = 1+(rand()%10);
   printf("Adding at buffer[%d] , %d\n", (int)arg, temp); //critical section 
@@ -37,24 +37,24 @@ void* produce(void* arg) {
    sleep(1); 
   
   counter++;
-  pthread_cond_signal(full);
-  pthread_mutex_unlock(mutex);
+  pthread_cond_signal(&full);
+  pthread_mutex_unlock(&mutex);
   
  }while(1);
   return (NULL);
 } 
 void* consume(void* arg) { 
  do{
-  pthread_mutex_lock(mutex);
+  pthread_mutex_lock(&mutex);
   while(counter==0/*buffer is empty(check buffer array size, make counter)*/){
-    pthread_cond_wait(full, mutex);
+    pthread_cond_wait(&full, &mutex);
   }
   printf("Consuming buffer[%d] item, %d\n", (int)arg,buffer[(int)arg]); //critical section 
    sleep(1); 
   counter--;
   
-  pthread_cond_signal(empty);
-  pthread_mutex_unlock(mutex);
+  pthread_cond_signal(&empty);
+  pthread_mutex_unlock(&mutex);
   
  }while(1);
   return (NULL);
