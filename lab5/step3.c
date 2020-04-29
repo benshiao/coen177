@@ -45,6 +45,10 @@ void* produce(void* arg) {
 }
 
 int main() { 
+ 
+sem_unlink("mutex"); 
+sem_unlink("full"); 
+sem_unlink("empty"); 
 mutex = sem_open("mutex", O_CREAT, 0644, 1);
 full = sem_open("full", O_CREAT, 0644, 0);
 empty = sem_open("empty", O_CREAT, 0644, 10);
@@ -60,9 +64,6 @@ for (i = 0; i < NTHREADS; i++) {
    printf("\t\t\tThread %d returned \n", i);
    }
 printf("Main thread done.\n");
-sem_unlink("mutex"); 
-sem_unlink("full"); 
-sem_unlink("empty"); 
   return 0; 
 } 
 
