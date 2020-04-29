@@ -25,7 +25,8 @@ void* consume(void* arg) {
  do{
  sem_wait(full);
   sem_wait(mutex); //entry section
-  printf("Consuming buffer[%d] : %d\n", (int)arg, buffer[(int)arg]); //critical section 
+  int index = (rand()%10);
+  printf("Consuming buffer[%d] : %d\n", index, buffer[(int)arg]); //critical section 
   //print
    sleep(1); 
   sem_post(mutex); //exit section
@@ -39,7 +40,8 @@ void* produce(void* arg) {
   sem_wait(empty);
   sem_wait(mutex); //entry section
   int temp = 1+(rand()%10);
-  printf("Producing item at buffer[%d]:  %d\n", (int)arg,temp); //critical section 
+  int index = (rand()%10);
+  printf("Producing item at buffer[%d]:  %d\n", index,temp); //critical section 
   //actually add
   buffer[(int)arg] = temp;
    sleep(1); 
