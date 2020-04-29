@@ -17,14 +17,14 @@ sem_t *mutex;
 
 void* go(void* arg) { 
   //sem_wait(mutex); //entry section
-  pthread_mutex_t lock;
-  pthread_mutex_init(&lock, NULL);
-  pthread_mutex_lock(&lock);
+//   pthread_mutex_t lock;
+//   pthread_mutex_init(&lock, NULL);
+//   pthread_mutex_lock(&lock);
   printf("Thread %d Entered Critical Section..\n", (int)arg); //critical section 
    sleep(1); 
   //sem_post(mutex); //exit section
-   pthread_mutex_unlock(&lock);
-  pthread_mutex_destroy(&mutex);
+//    pthread_mutex_unlock(&lock);
+//   pthread_mutex_destroy(&mutex);
   return (NULL);
 } 
 
