@@ -9,13 +9,14 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <time.h>
 #include <pthread.h> 
 #include <fcntl.h>
 #include <semaphore.h> 
 
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
-int buffer[10] = {11,22,33,44,55,66,77,88,99,100};
+int buffer[10];
 sem_t *mutex; 
 sem_t *full; 
 sem_t *empty; 
@@ -24,7 +25,8 @@ void* consume(void* arg) {
  do{
  sem_wait(full);
   sem_wait(mutex); //entry section
-  printf("Thread %d Entered Critical Section.. Consuming %d\n", (int)arg, buffer[(int)arg]); //critical section 
+  printf("Consuming buffer[%d] : %d\n", (int)arg, buffer[(int)arg]); //critical section 
+  //print
    sleep(1); 
   sem_post(mutex); //exit section
   sem_post(empty); //exit section
@@ -36,7 +38,10 @@ void* produce(void* arg) {
  do{
   sem_wait(empty);
   sem_wait(mutex); //entry section
-  printf("Thread %d Entered Critical Section.. producing item %d\n", (int)arg,buffer[(int)arg]); //critical section 
+  int temp = 1+(rand()%10);
+  printf("Producing item at buffer[%d]:  %d\n", (int)arg,temp); //critical section 
+  //actually add
+  buffer[(int)arg] = temp;
    sleep(1); 
   sem_post(mutex);
   sem_post(full); //exit section
@@ -45,7 +50,7 @@ void* produce(void* arg) {
 }
 
 int main() { 
- 
+ srand(time(NULL));
 sem_unlink("mutex"); 
 sem_unlink("full"); 
 sem_unlink("empty"); 
