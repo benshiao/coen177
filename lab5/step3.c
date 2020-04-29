@@ -43,7 +43,7 @@ void* produce(void* arg) {
   int index = (rand()%10);
   printf("Producing item at buffer[%d]:  %d\n", index,temp); //critical section 
   //actually add
-  buffer[(int)arg] = temp;
+  buffer[index] = temp;
    sleep(1); 
   sem_post(mutex);
   sem_post(full); //exit section
