@@ -2,7 +2,8 @@
 /* Name: Benjamin Shiao
 # Date: 4/28/20
 # Title: Lab5 – Synchronization using semaphores, lock, and condition variables
-# Description: Program to solve producer consumer problem using semaphores. Five producers and Five consumer threads are made.
+# Description: Program to solve producer consumer problem using semaphores. 
+#Five producers and Five consumer threads are made.
 */
 // Thread Sychronization
 
@@ -60,6 +61,8 @@ for (i = 0; i < NTHREADS; i++) {
    }
 printf("Main thread done.\n");
 sem_unlink("mutex"); 
+sem_unlink("full"); 
+sem_unlink("empty"); 
   return 0; 
 } 
 
