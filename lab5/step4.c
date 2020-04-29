@@ -16,45 +16,41 @@
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
 int buffer[10] = {11,22,33,44,55,66,77,88,99,100};
-sem_t *mutex; 
-sem_t *full; 
-sem_t *empty; 
-pthread_mutex_t lock;
-/*
-*lock = 
-  pthread_mutex_lock(&lock);
-  unlock
-pthread_mutex_unlock(&lock);
+// sem_t *mutex; 
+// sem_t *full; 
+// sem_t *empty; 
+pthread_mutex_t mutex;
+pthread_mutex_t empty;
+pthread_mutex_t full;
 
-*/
 void* consume(void* arg) { 
  do{
-  pthread_mutex_lock(&lock); //entry section
+  pthread_mutex_lock(&mutex); //entry section
   while(/*buffer is full*/){
-    pthread_cond_wait(empty, mutex);
+    pthread_cond_wait(&empty, &mutex);
   }
   printf("Adding the %d item to buffer, %d\n", (int)arg, buffer[(int)arg]); //critical section 
    sleep(1); 
   
   
-  pthread_cond_signal(full);
-  pthread_mutex_unlock(&lock);
+  pthread_cond_signal(&full);
+  pthread_mutex_unlock(&mutex);
   
  }while(1);
   return (NULL);
 } 
 void* produce(void* arg) { 
  do{
-  pthread_mutex_lock(&lock);
+  pthread_mutex_lock(&mutex);
   while(/*buffer is empty*/){
-    pthread_cond_wait(full, mutex);
+    pthread_cond_wait(&full, &mutex);
   }
   printf("Removing %d item, %d\n", (int)arg,buffer[(int)arg]); //critical section 
    sleep(1); 
   
   
-  pthread_cond_signal(empty);
-  pthread_mutex_unlock(&lock);
+  pthread_cond_signal(&empty);
+  pthread_mutex_unlock(&mutex);
   
  }while(1);
   return (NULL);
@@ -62,13 +58,17 @@ void* produce(void* arg) {
 
 int main() { 
  pthread_mutex_destroy(&mutex);
-  pthread_mutex_init(&lock, NULL);
- sem_unlink("full"); 
-sem_unlink("empty"); 
-sem_unlink("mutex"); 
-full = sem_open("mutex", O_CREAT, 0644, 1);
-full = sem_open("full", O_CREAT, 0644, 0);
-empty = sem_open("empty", O_CREAT, 0644, 10);
+ pthread_mutex_destroy(&empty);
+ pthread_mutex_destroy(&full);
+  pthread_mutex_init(&mutex, NULL);
+  pthread_mutex_init(&empty, NULL);
+  pthread_mutex_init(&full, NULL);
+//  sem_unlink("full"); 
+// sem_unlink("empty"); 
+// sem_unlink("mutex"); 
+// full = sem_open("mutex", O_CREAT, 0644, 1);
+// full = sem_open("full", O_CREAT, 0644, 0);
+// empty = sem_open("empty", O_CREAT, 0644, 10);
  
  
 static int i;
