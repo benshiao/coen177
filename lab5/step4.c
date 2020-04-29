@@ -25,7 +25,7 @@ pthread_mutex_t mutex;
 pthread_mutex_t empty;
 pthread_mutex_t full;
 
-void* producer(void* arg) { 
+void* produce(void* arg) { 
  do{
   pthread_mutex_lock(mutex); //entry section
   while(counter>=10/*buffer is full(check buffer array size)*/){
@@ -43,7 +43,7 @@ void* producer(void* arg) {
  }while(1);
   return (NULL);
 } 
-void* consumer(void* arg) { 
+void* consume(void* arg) { 
  do{
   pthread_mutex_lock(mutex);
   while(counter==0/*buffer is empty(check buffer array size, make counter)*/){
