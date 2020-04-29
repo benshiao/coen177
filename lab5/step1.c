@@ -1,6 +1,6 @@
 /* Name: Benjamin Shiao
-# Date: 4/21/20
-# Title: Lab4 – Developing multi-threaded applications
+# Date: 4/28/20
+# Title: Lab5 – Synchronization using semaphores, lock, and condition variables
 # Description: Original file given for step 1
 */
 // Thread Sychronization
