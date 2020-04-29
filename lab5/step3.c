@@ -23,7 +23,7 @@ sem_t *mutex;
 sem_t *full; 
 sem_t *empty; 
 
-void* consumer(void* arg) { 
+void* consume(void* arg) { 
  do{
  sem_wait(full);
   sem_wait(mutex); //entry section
