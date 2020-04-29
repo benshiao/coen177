@@ -1,0 +1,7 @@
+/* Name: Benjamin Shiao
+# Date: 4/28/20
+# Title: Lab5 – Synchronization using semaphores, lock, and condition variables
+# Description: report on lab 5
+*/
+
+Step 1: 
