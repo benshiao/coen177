@@ -32,7 +32,7 @@ void* produce(void* arg) {
     pthread_cond_wait(&empty, &mutex);
   }
   int temp = 1+(rand()%10);
-  int index = (rand()%10)
+  int index = (rand()%10);
   printf("Adding at buffer[%d] , %d\n", index, temp); //critical section 
   buffer[index] = temp;
    sleep(1); 
