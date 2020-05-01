@@ -24,8 +24,8 @@ int position2;
 // sem_t *full; 
 // sem_t *empty; 
 pthread_mutex_t mutex;
-pthread_mutex_t empty;
-pthread_mutex_t full;
+pthread_cond_t empty;
+pthread_cond_t full;
 
 void* produce(void* arg) { 
  do{
@@ -70,11 +70,11 @@ int main() {
  counter = 0;
  srand(time(NULL));
  pthread_mutex_destroy(&mutex);
- pthread_mutex_destroy(&empty);
- pthread_mutex_destroy(&full);
+ pthread_cond_destroy(&empty);
+ pthread_cond_destroy(&full);
   pthread_mutex_init(&mutex, NULL);
-  pthread_mutex_init(&empty, NULL);
-  pthread_mutex_init(&full, NULL);
+  pthread_cond_init(&empty, NULL);
+  pthread_cond_init(&full, NULL);
  position = 0;
  position2 = 0;
 //  sem_unlink("full"); 
