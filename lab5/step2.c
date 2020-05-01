@@ -10,6 +10,7 @@
 #include <pthread.h> 
 #include <fcntl.h>
 #include <semaphore.h> 
+#include <signal.h>
 
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
@@ -25,8 +26,15 @@ void* go(void* arg) {
    pthread_mutex_unlock(&lock);
   return (NULL);
 } 
-
+void cleanup(int sigtype){   
+ sem_unlink("mutex3");    
+ sem_unlink("full");    
+ sem_unlink("empty");    
+ printf("\n Terminating\n");    
+ exit(0);
+}
 int main() { 
+ signal(SIGINT,cleanup);
 //mutex = sem_open("mutex", O_CREAT, 0644, 1);
   pthread_mutex_init(&lock, NULL);
 static int i;
