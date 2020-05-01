@@ -50,8 +50,15 @@ void* produce(void* arg) {
  }while(1);
   return (NULL);
 }
-
+void cleanup(int sigtype){   
+ sem_unlink("mutex3");    
+ sem_unlink("full");    
+ sem_unlink("empty");    
+ printf("\n Terminating\n");    
+ exit(0);
+}
 int main() { 
+ signal(SIGINT,cleanup);
  srand(time(NULL));
 sem_unlink("mutex3"); 
 sem_unlink("full"); 
