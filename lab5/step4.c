@@ -18,6 +18,8 @@
 pthread_t threads[NTHREADS];
 int buffer[10];
 int counter;
+int position;
+int position2;
 // sem_t *mutex; 
 // sem_t *full; 
 // sem_t *empty; 
@@ -32,9 +34,10 @@ void* produce(void* arg) {
     pthread_cond_wait(&empty, &mutex);
   }
   int temp = 1+(rand()%10);
-  int index = (rand()%10);
-  printf("Adding at buffer[%d] , %d\n", index, temp); //critical section 
-  buffer[index] = temp;
+  //int index = (rand()%10);
+  printf("Adding at buffer[%d] , %d\n", position, temp); //critical section 
+  buffer[position] = temp;
+  position = (position+1)%10;
    sleep(1); 
   
   counter++;
@@ -50,9 +53,10 @@ void* consume(void* arg) {
   while(counter==0/*buffer is empty(check buffer array size, make counter)*/){
     pthread_cond_wait(&full, &mutex);
   }
-  int index = rand()%10;
-  printf("Consuming buffer[%d] item, %d\n", index,buffer[index]); //critical section 
+  //int index = rand()%10;
+  printf("Consuming buffer[%d] item, %d\n", position2,buffer[position2]); //critical section 
    sleep(1); 
+  position2 = (position2+1)%10;
   counter--;
   
   pthread_cond_signal(&empty);
@@ -71,6 +75,8 @@ int main() {
   pthread_mutex_init(&mutex, NULL);
   pthread_mutex_init(&empty, NULL);
   pthread_mutex_init(&full, NULL);
+ position = 0;
+ position2 = 0;
 //  sem_unlink("full"); 
 // sem_unlink("empty"); 
 // sem_unlink("mutex"); 
