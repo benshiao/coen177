@@ -21,13 +21,16 @@ int buffer[10];
 sem_t *mutex3; 
 sem_t *full2; 
 sem_t *empty2; 
+int position;
+int position1;
 
 void* consume(void* arg) { 
  do{
  sem_wait(full2);
   sem_wait(mutex3); //entry section
-  int index = (rand()%10);
-  printf("Consuming buffer[%d] : %d\n", index, buffer[index]); //critical section 
+  //int index = (rand()%10);
+  printf("Consuming buffer[%d] : %d\n", position1, buffer[position1]); //critical section 
+  position1 = (position1+1)%10;
   //print
    sleep(1); 
   sem_post(mutex3); //exit section
@@ -41,10 +44,11 @@ void* produce(void* arg) {
   sem_wait(empty2);
   sem_wait(mutex3); //entry section
   int temp = 1+(rand()%10);
-  int index = (rand()%10);
-  printf("Producing item at buffer[%d]:  %d\n", index,temp); //critical section 
+  //int index = (rand()%10);
+  printf("Producing item at buffer[%d]:  %d\n", position,temp); //critical section 
   //actually add
-  buffer[index] = temp;
+  buffer[position] = temp;
+  position = (position+1)%10;
    sleep(1); 
   sem_post(mutex3);
   sem_post(full2); //exit section
@@ -67,6 +71,8 @@ sem_unlink("empty2");
 mutex3 = sem_open("mutex3", O_CREAT, 0644, 1);
 full2 = sem_open("full2", O_CREAT, 0644, 0);
 empty2 = sem_open("empty2", O_CREAT, 0644, 10);
+ position = 0;
+ position1 = 0;
 static int i;
 for (i = 0; i < NTHREADS; i++){ //can try seperate numbers, like more than 1 con and 1 prod
    if(i%2==0)
