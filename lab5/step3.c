@@ -17,19 +17,19 @@
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
 int buffer[10];
-sem_t *mutex; 
+sem_t *mutex3; 
 sem_t *full; 
 sem_t *empty; 
 
 void* consume(void* arg) { 
  do{
  sem_wait(full);
-  sem_wait(mutex); //entry section
+  sem_wait(mutex3); //entry section
   int index = (rand()%10);
   printf("Consuming buffer[%d] : %d\n", index, buffer[index]); //critical section 
   //print
    sleep(1); 
-  sem_post(mutex); //exit section
+  sem_post(mutex3); //exit section
   sem_post(empty); //exit section
   
  }while(1);
@@ -38,14 +38,14 @@ void* consume(void* arg) {
 void* produce(void* arg) { 
  do{
   sem_wait(empty);
-  sem_wait(mutex); //entry section
+  sem_wait(mutex3); //entry section
   int temp = 1+(rand()%10);
   int index = (rand()%10);
   printf("Producing item at buffer[%d]:  %d\n", index,temp); //critical section 
   //actually add
   buffer[index] = temp;
    sleep(1); 
-  sem_post(mutex);
+  sem_post(mutex3);
   sem_post(full); //exit section
  }while(1);
   return (NULL);
@@ -53,10 +53,10 @@ void* produce(void* arg) {
 
 int main() { 
  srand(time(NULL));
-sem_unlink("mutex"); 
+sem_unlink("mutex3"); 
 sem_unlink("full"); 
 sem_unlink("empty"); 
-mutex = sem_open("mutex", O_CREAT, 0644, 1);
+mutex3 = sem_open("mutex3", O_CREAT, 0644, 1);
 full = sem_open("full", O_CREAT, 0644, 0);
 empty = sem_open("empty", O_CREAT, 0644, 10);
 static int i;
