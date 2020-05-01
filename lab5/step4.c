@@ -38,7 +38,7 @@ void* produce(void* arg) {
   printf("Adding at buffer[%d] , %d\n", position, temp); //critical section 
   buffer[position] = temp;
   position = (position+1)%10;
-   sleep(1); 
+   sleep(2); 
   
   counter++;
   pthread_cond_signal(&full);
