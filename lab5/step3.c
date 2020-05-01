@@ -13,7 +13,7 @@
 #include <pthread.h> 
 #include <fcntl.h>
 #include <semaphore.h> 
-#include <stdlib.h>
+#include <signal.h>
 
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
