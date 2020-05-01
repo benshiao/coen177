@@ -24,6 +24,8 @@ void* go(void* arg) {
 } 
 
 int main() { 
+  
+sem_unlink("mutex"); 
 mutex = sem_open("mutex", O_CREAT, 0644, 1);
 static int i;
 for (i = 0; i < NTHREADS; i++)  
