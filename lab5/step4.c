@@ -38,9 +38,9 @@ void* produce(void* arg) {
   printf("Adding at buffer[%d] , %d\n", position, temp); //critical section 
   buffer[position] = temp;
   position = (position+1)%10;
+  counter++;
    sleep(2); 
   
-  counter++;
   pthread_cond_signal(&full);
   pthread_mutex_unlock(&mutex);
   
@@ -55,9 +55,9 @@ void* consume(void* arg) {
   }
   //int index = rand()%10;
   printf("Consuming buffer[%d] item, %d\n", position2,buffer[position2]); //critical section 
+  counter--;
    sleep(1); 
   position2 = (position2+1)%10;
-  counter--;
   
   pthread_cond_signal(&empty);
   pthread_mutex_unlock(&mutex);
