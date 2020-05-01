@@ -70,9 +70,9 @@ empty = sem_open("empty", O_CREAT, 0644, 10);
 static int i;
 for (i = 0; i < NTHREADS; i++){ //can try seperate numbers, like more than 1 con and 1 prod
    if(i%2==0)
-    pthread_create(&threads[i], NULL, produce, (void *)(size_t)i);
+    pthread_create(&threads[i], NULL, produce, NULL);
    else
-    pthread_create(&threads[i], NULL, consume, (void *)(size_t)i);
+    pthread_create(&threads[i], NULL, consume, NULL);
 }
 for (i = 0; i < NTHREADS; i++) {
    pthread_join(threads[i],NULL);
