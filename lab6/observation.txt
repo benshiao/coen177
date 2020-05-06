@@ -1,0 +1,7 @@
+/* Name: Benjamin Shiao
+# Date: 5/5/20
+# Title: Lab6 – Minix operating system 
+# Description: report on lab 6
+*/
+
+Step 1:
