@@ -1,0 +1,7 @@
+/* Name: Benjamin Shiao
+# Date: 5/19/20
+# Title: Lab8 – Memory management
+# Description: report on lab 8
+*/
+
+Step 1: 
