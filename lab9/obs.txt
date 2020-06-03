@@ -6,4 +6,18 @@
 
 Step 1: I put the code(minus the file5) into a sh file and ran it on the linux machine. It took several minutes to finish running, then it had created the 4 txt files as expected. I saw their size was according to the sh file.
 
-Step 2: I created the C and sh files given, and using them I was able to see the speed for reading all four files created.
+Step 2: I created the C and sh files given, and using them I was able to see the speed for reading all four files created. It said the speed for file 1, 2, 3, 4 respectively was:****************
+This showed me that as the size of the file being read grew, the time it took to read it also increased.
+
+Step 3: I had similar code for the C and sh files in step 3, except the sh file had loops to vary the buffer size from 100 1000 10000 100000. This required me to change the standard buffer size of 10,000 in the step 2 C file into atoi(argv[2]) to take in the second arg given running the sh file. I saw that for all file sizes, increasing the buffer size would cause reading to *******increase/decrease*************
+
+Step 4: I used the same sh code from step 3, but I made a new C file where I opened a new file based on the given argv[1] file name and added .out, as so:
+char *str2 = malloc(strlen(argv[1]+5));
+strcpy(str2, argv[1]);
+
+wp = fopen(strcat(str2, ".out"), 1, "wb");
+Then inside the loop reading the argv[1] file, I added the line 'fwrite(buffer,sizeof(buffer),1, wp);' to write to the txt file I made. This meant I was reading AND writing to files for varying buffer sizes  100 1000 10000 100000 for each of my four txt files of different sizes. I saw that increasing buffer size for reading and writing files would *******all took longer than just reading, but showed similar patterns like in step 3 where larger buffer sizes took********.
+
+
+Step 5: I used the given sh code for step 5, but took off file5.txt because it would take too long. Then I made a C file similar to step 4, but it had a main function that created a number threads based on argv[3] (2 8 32 64 threads), using buffer size based on argv[2] (100 1000 10000 100000) for all 4 of my txt files of different sizes and would read and write.
+I saw that as I increased the number of threads, *****does buffer size impact? or same as before******time increase/decrease with # threads?*************
