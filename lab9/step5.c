@@ -32,9 +32,8 @@ void* write_func(void* arg) {
       char arr[30];
       sprintf(arr,"%s.sout%d",argv[1],(int)arg);
 
-      wp = fopen(arr, 1, "wb");
+      wp = fopen(arr, "wb");
              
-      wp = fopen(str2 , 1, "wb");
 
       while (fread(buffer, sizeof(buffer), 1, fp)){
           fwrite(buffer,sizeof(buffer),1, wp);
