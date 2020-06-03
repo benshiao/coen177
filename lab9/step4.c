@@ -10,10 +10,11 @@ FILE *wp;
 fp = fopen(argv[1], "rb");
 
 
-wp = fopen(char *strcat(char *argv[1], const char *src);
+wp = fopen( <idk> );
 
 
 while (fread(buffer, sizeof(buffer), 1, fp)){
-    fwrite(buffer,sizeof(buffer),1, <MAKE FILE HERE?>);
+    fwrite(buffer,sizeof(buffer),1, wp);
 }
 fclose(fp);
+fclose(wp);
