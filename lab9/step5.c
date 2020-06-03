@@ -1,7 +1,7 @@
 /* Name: Benjamin Shiao
 # Date: 6/2/20
 # Title: Lab9 
-# Description: Step 4 C code that takes in 2 args for buffer size and file name and then reads and WRITEs using them.
+# Description: Step 5 C code that takes in 3 args for buffer size, number of threads, and file name and then reads and WRITEs using them.
 */
 
 #include <stdio.h>
