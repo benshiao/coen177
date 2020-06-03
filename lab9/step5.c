@@ -37,7 +37,6 @@ void* write_func(void* arg) {
       while (fread(buffer, sizeof(buffer), 1, fp)){
           fwrite(buffer,sizeof(buffer),1, wp);
       }
-      fclose(fp);
       fclose(wp);
 }
 
