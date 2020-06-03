@@ -13,30 +13,35 @@
 #include <signal.h>
 
 
-pthread_t threads[argv[3]];
-char buffer[stoi(argv[2])];
+pthread_t threads[atoi(argv[3])];
+char buffer[atoi(argv[2])];
 FILE *fp;
-FILE *wp;
-fp = fopen(argv[1], "rb");
 
+void* write_func(void* arg) { 
+      FILE *wp;
+      fp = fopen(argv[1], "rb");
 
-wp = fopen( <idk> );
-/*
+      char *str2 = malloc(strlen(argv[1]+6));
+      strcpy(str2, argv[1]);//filex.txt
+      strcat(str2, ".out"); //filex.txt.out
+      strcat(str2, itoa((int)arg); //filex.txt.outi
+             
+      wp = fopen(str2 , 1, "wb");
+
+      while (fread(buffer, sizeof(buffer), 1, fp)){
+          fwrite(buffer,sizeof(buffer),1, wp);
+      }
+      fclose(fp);
+      fclose(wp);
+}
 
 int main() { 
       static int i;
-      for (i = 0; i < argv[3]; i++){
+      for (i = 0; i < atoi(argv[3]); i++){
           pthread_create(&threads[i], NULL, write_func, (void *)(size_t)i);
       }
-      for (i = 0; i < argv[3]; i++) {
+      for (i = 0; i < atoi(argv[3]); i++) {
          pthread_join(threads[i],NULL);
          printf("\t\t\tThread %d returned \n", i);
       }
 }
-   */
-
-while (fread(buffer, sizeof(buffer), 1, fp)){
-    fwrite(buffer,sizeof(buffer),1, wp);
-}
-fclose(fp);
-fclose(wp);
