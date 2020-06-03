@@ -19,7 +19,7 @@ fp = fopen(argv[1], "rb");
 char arr[30];
 sprintf(arr,"%s.sout",argv[1]);
     
-wp = fopen(arr, 1, "wb");
+wp = fopen(arr, "wb");
 
 
 while (fread(buffer, sizeof(buffer), 1, fp)){
