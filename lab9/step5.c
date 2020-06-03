@@ -11,6 +11,9 @@
 #include <fcntl.h>
 #include <semaphore.h> 
 #include <signal.h>
+#include<stdio.h>
+#include<stdlib.h>
+
 
 
 pthread_t threads[atoi(argv[3])];
@@ -35,7 +38,7 @@ void* write_func(void* arg) {
       fclose(wp);
 }
 
-int main() { 
+int main(int argc, char *argv[]) { 
       static int i;
       for (i = 0; i < atoi(argv[3]); i++){
           pthread_create(&threads[i], NULL, write_func, (void *)(size_t)i);
@@ -44,4 +47,5 @@ int main() {
          pthread_join(threads[i],NULL);
          printf("\t\t\tThread %d returned \n", i);
       }
+      return 0;
 }
