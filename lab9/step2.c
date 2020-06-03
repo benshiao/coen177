@@ -1,7 +1,7 @@
 /* Name: Benjamin Shiao
 # Date: 6/2/20
 # Title: Lab9 
-# Description: Step 2 C code that reads a file with a buffer size 10,000
+# Description: Step 2 C code that reads a file with name from argv[1] with a buffer size 10,000
 */
 char buffer[10000];
 FILE *fp;
