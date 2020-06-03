@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
       }
       for (i = 0; i < atoi(argv[3]); i++) {
          pthread_join(threads[i],NULL);
-         printf("\t\t\tThread %d returned \n", i);
+         //printf("\t\t\tThread %d returned \n", i);
       }
       return 0;
 }
