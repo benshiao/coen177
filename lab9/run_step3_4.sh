@@ -2,7 +2,7 @@
 /* Name: Benjamin Shiao
 # Date: 6/2/20
 # Title: Lab9 
-# Description: Step 3 code that runs all 4 txt files and reads them for the different buffer sizes
+# Description: Step 3 and step 4 sh code that runs all 4 txt files and reads them for the different buffer sizes
 */
 
 
