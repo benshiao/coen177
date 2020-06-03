@@ -16,8 +16,7 @@
 
 
 
-pthread_t threads[atoi(argv[3])];
-char buffer[atoi(argv[2])];
+char *buffer;
 FILE *fp;
 char *strname;
 
@@ -43,6 +42,8 @@ void* write_func(void* arg) {
 }
 
 int main(int argc, char *argv[]) { 
+      buffer = malloc(atoi(argv[2]));
+      pthread_t threads[atoi(argv[3])];
       static int i;
       strname = argv[1];
       fp = fopen(argv[1], "rb");
