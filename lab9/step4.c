@@ -13,10 +13,13 @@ FILE *wp;
 fp = fopen(argv[1], "rb");
 
 
-char *str2 = malloc(strlen(argv[1]+5));
-strcpy(str2, argv[1]);
+// char *str2 = malloc(strlen(argv[1]+5));
+// strcpy(str2, argv[1]);
 
-wp = fopen(strcat(str2, ".out"), 1, "wb");
+char arr[30];
+sprintf(arr,"%s.sout",argv[1]);
+    
+wp = fopen(arr, 1, "wb");
 
 
 while (fread(buffer, sizeof(buffer), 1, fp)){
