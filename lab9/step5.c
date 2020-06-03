@@ -25,9 +25,14 @@ void* write_func(void* arg) {
       fp = fopen(argv[1], "rb");
 
       char *str2 = malloc(strlen(argv[1]+6));
-      strcpy(str2, argv[1]);//filex.txt
-      strcat(str2, ".out"); //filex.txt.out
-      strcat(str2, itoa((int)arg); //filex.txt.outi
+      
+      // char *str2 = malloc(strlen(argv[1]+5));
+      // strcpy(str2, argv[1]);
+
+      char arr[30];
+      sprintf(arr,"%s.sout%d",argv[1],(int)arg);
+
+      wp = fopen(arr, 1, "wb");
              
       wp = fopen(str2 , 1, "wb");
 
