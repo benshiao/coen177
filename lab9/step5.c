@@ -22,7 +22,6 @@ FILE *fp;
 
 void* write_func(void* arg) { 
       FILE *wp;
-      fp = fopen(argv[1], "rb");
 
       char *str2 = malloc(strlen(argv[1]+6));
       
@@ -44,6 +43,8 @@ void* write_func(void* arg) {
 
 int main(int argc, char *argv[]) { 
       static int i;
+      
+      fp = fopen(argv[1], "rb");
       for (i = 0; i < atoi(argv[3]); i++){
           pthread_create(&threads[i], NULL, write_func, (void *)(size_t)i);
       }
