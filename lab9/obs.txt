@@ -1,0 +1,9 @@
+/* Name: Benjamin Shiao
+# Date: 6/2/20
+# Title: Lab9 – . File performance measurement
+# Description: report on lab 9
+*/
+
+Step 1: I put the code(minus the file5) into a sh file and ran it on the linux machine. It took several minutes to finish running, then it had created the 4 txt files as expected. I saw their size was according to the sh file.
+
+Step 2: 
