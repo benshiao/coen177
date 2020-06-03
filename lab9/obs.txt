@@ -6,4 +6,4 @@
 
 Step 1: I put the code(minus the file5) into a sh file and ran it on the linux machine. It took several minutes to finish running, then it had created the 4 txt files as expected. I saw their size was according to the sh file.
 
-Step 2: 
+Step 2: I created the C and sh files given, and using them I was able to see the speed for reading all four files created.
