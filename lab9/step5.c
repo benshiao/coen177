@@ -17,12 +17,12 @@
 
 
 char *buffer;
-FILE *fp;
+//FILE *fp;
 char *strname;
 
 void* write_func(void* arg) { 
       FILE *wp;
-
+      FILE *fp = fopen(strname, "rb");
       //char *str2 = malloc(strlen(strname+6));
       
       // char *str2 = malloc(strlen(argv[1]+5));
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
       pthread_t threads[atoi(argv[3])];
       static int i;
       strname = argv[1];
-      fp = fopen(argv[1], "rb");
+      //fp = fopen(argv[1], "rb");
       for (i = 0; i < atoi(argv[3]); i++){
           pthread_create(&threads[i], NULL, write_func, (void *)(size_t)i);
       }
