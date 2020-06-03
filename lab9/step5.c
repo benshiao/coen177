@@ -19,17 +19,18 @@
 pthread_t threads[atoi(argv[3])];
 char buffer[atoi(argv[2])];
 FILE *fp;
+char *strname;
 
 void* write_func(void* arg) { 
       FILE *wp;
 
-      char *str2 = malloc(strlen(argv[1]+6));
+      //char *str2 = malloc(strlen(strname+6));
       
       // char *str2 = malloc(strlen(argv[1]+5));
       // strcpy(str2, argv[1]);
 
       char arr[30];
-      sprintf(arr,"%s.sout%d",argv[1],(int)arg);
+      sprintf(arr,"%s.sout%d",strname,(int)arg);
 
       wp = fopen(arr, "wb");
              
@@ -43,7 +44,7 @@ void* write_func(void* arg) {
 
 int main(int argc, char *argv[]) { 
       static int i;
-      
+      strname = argv[1];
       fp = fopen(argv[1], "rb");
       for (i = 0; i < atoi(argv[3]); i++){
           pthread_create(&threads[i], NULL, write_func, (void *)(size_t)i);
