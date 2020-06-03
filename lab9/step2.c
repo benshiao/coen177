@@ -3,6 +3,9 @@
 # Title: Lab9 
 # Description: Step 2 C code that reads a file with name from argv[1] with a buffer size 10,000
 */
+#include<stdio.h>
+#include<stdlib.h>
+
 char buffer[10000];
 FILE *fp;
 fp = fopen(argv[1], "rb");
