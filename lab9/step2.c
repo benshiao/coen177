@@ -13,5 +13,5 @@ int main(int argc, char *argv[]) {
     while (fread(buffer, sizeof(buffer), 1, fp)){
     }
     fclose(fp);
-
+    return 0;
 }
