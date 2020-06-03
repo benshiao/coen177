@@ -3,7 +3,10 @@
 # Title: Lab9 
 # Description: Step 4 C code that takes in 2 args for buffer size and file name and then reads and WRITEs using them.
 */
+#include<stdio.h>
+#include<stdlib.h>
 
+int main(int argc, char *argv[]) { 
 char buffer[atoi(argv[2])];
 FILE *fp;
 FILE *wp;
@@ -21,3 +24,5 @@ while (fread(buffer, sizeof(buffer), 1, fp)){
 }
 fclose(fp);
 fclose(wp);
+return 0;
+}
